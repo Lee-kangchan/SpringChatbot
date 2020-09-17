@@ -65,7 +65,7 @@ public class ChatData {
         else if(data.contains("팁")){return "";}
         else{return"해당내용에 답변이 없어요 ㅠㅠ 해당 내용 답변을 알고 싶으면 상담신청을 통해서 최대한 알려드리겠습니다 :) ";}
     }
-    public HashMap<String,Object> list(String data){
+    public List<HashMap<String,Object>> list(){
         List<HashMap<String,Object>> quickReplies = new ArrayList<>();
         HashMap<String,Object> quickRepl = new HashMap<>();
         quickRepl.put("action","message");
@@ -121,5 +121,6 @@ public class ChatData {
         quickRepl9.put("messageText","팁");
         quickReplies.add(quickRepl9);
 
+        return quickReplies;
     }
 }
