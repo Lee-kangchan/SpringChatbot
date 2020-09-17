@@ -8,7 +8,6 @@ public class ChatData {
 
     public String request(String data){
         if(data.contains("행사")||data.contains("축제")){ return "행사";}
-        if(data.contains("축제")){return "축제";}
         if(data.contains("진로")){return "진로";}
         if(data.contains("시설")){return "시설";}
         if(data.contains("미리")||data.contains("준비")||(data.contains("가기 전"))){return "준비";}
@@ -60,7 +59,6 @@ public class ChatData {
         }
         else if(data.contains("도서관")){
             return "도서관 대한 정보는 없어 동서대학교 민석도서관 홈페이지를 한번 참고해보세요 ㅠㅠ ";}
-        else if(data.contains("상담신청")){return "상담신청";}
         else if(data.contains("키워드")){return "키워드";}
         else if(data.contains("팁")){return "팁";}
         else if(data.contains("분위기")){return " ";}
@@ -88,13 +86,13 @@ public class ChatData {
 
         HashMap<String,Object> quickRepl4 = new HashMap<>();
         quickRepl4.put("action","message");
-        quickRepl4.put("label","미리");
-        quickRepl4.put("messageText","미리");
+        quickRepl4.put("label","준비 하면 좋은 것");
+        quickRepl4.put("messageText","준비");
         quickReplies.add(quickRepl4);
 
         HashMap<String,Object> quickRepl5 = new HashMap<>();
         quickRepl5.put("action","message");
-        quickRepl5.put("label","프로젝트");
+        quickRepl5.put("label","선배들의 프로젝트");
         quickRepl5.put("messageText","프로젝트");
         quickReplies.add(quickRepl5);
 
@@ -109,12 +107,6 @@ public class ChatData {
         quickRepl7.put("label","도서관");
         quickRepl7.put("messageText","도서관");
         quickReplies.add(quickRepl7);
-
-        HashMap<String,Object> quickRepl8 = new HashMap<>();
-        quickRepl8.put("action","message");
-        quickRepl8.put("label","상담신청");
-        quickRepl8.put("messageText","상담신청");
-        quickReplies.add(quickRepl8);
 
 
         return quickReplies;
