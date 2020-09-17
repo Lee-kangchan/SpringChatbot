@@ -43,12 +43,18 @@ public class KKORestAPI {
             HashMap<String, Object> simpleText = new HashMap<>();
             HashMap<String, Object> text = new HashMap<>();
 
+            List<HashMap<String,Object>> quickReplies = new ArrayList<>();
+
+            if(rtnStr.contains("키워드")){
+                quickReplies = chatdata.list();
+            }
+
             text.put("text", rtnStr);
             simpleText.put("simpleText", text);
             outputs.add(simpleText);
 
             template.put("outputs", outputs);
-
+            template.put("quickReplies", quickReplies);
             resultJson.put("version", "2.0");
             resultJson.put("template", template);
 
