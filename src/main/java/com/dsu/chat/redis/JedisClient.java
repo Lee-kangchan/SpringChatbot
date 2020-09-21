@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
-import redis.clients.util.Pool;
+import redis.clients.jedis.util.Pool;
 
 @Configuration
 public class JedisClient {
@@ -15,7 +15,7 @@ public class JedisClient {
         Pool<Jedis> jedisPool;
         JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
         jedisPoolConfig.setMaxTotal(1000);
-        jedisPool = new JedisPool(jedisPoolConfig, "127.0.0.1", 6379, 10000, null);
+        jedisPool = new JedisPool(jedisPoolConfig, "127.0.0.1", 6379, 10000000, null);
 
         return jedisPool.getResource();
     }
