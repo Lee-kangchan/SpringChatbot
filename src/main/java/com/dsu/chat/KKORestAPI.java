@@ -1,21 +1,19 @@
 package com.dsu.chat;
 
 
+import com.dsu.chat.redis.RedisManager;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @RestController
 public class KKORestAPI {
+    @Autowired
+    RedisManager managers;
 
     //카카오톡 오픈빌더로 리턴할 스킬 API
     @RequestMapping(value = "/kkoChat/v1", method = {RequestMethod.POST, RequestMethod.GET}, headers = {"Accept=application/json"})
@@ -64,4 +62,9 @@ public class KKORestAPI {
 
         return resultJson;
     }
+    @GetMapping(value = "/data")
+    public Set<String> userDate(){
+        return managers.getData();
+    }
+
 }
