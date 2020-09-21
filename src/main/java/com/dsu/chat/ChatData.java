@@ -43,6 +43,7 @@ public class ChatData {
         if(data.contains("튜터링")){return "튜터링";}
         if(data.contains("분위기")){return "분위기";}
         if(data.contains("장학금")){return "장학금";}
+        if(data.contains("지원")){return "지원";}
         if(data.contains("Q")){
             String a = data.replace("Q"," ").replace(":","");
             logger.info(a);
@@ -115,12 +116,12 @@ public class ChatData {
                     "주어질 예정이에요";
         } else if(data.contains("장학금")){
             return "기본적으로 너무 많은 장학금이 있어서 핵심적인 장학금만 소개해줄게요 \n\n" +
-                    "첫번째는 성적장학금 성적을 잘받은 일부분만 순서대로 장학금을 주는 제도에요 \n" +
-                    "두번째는 AI심화트랙을 참여하면 지급하는 우수학생 장학금 \n" +
-                    "세번째는 SW튜터링 우수장학으로 SW전공자 중에서 튜터링의 튜터에게 지급해주는 장학 \n" +
-                    "네번째는 SW연계전공에 참여하는 학생에게 지급되는 SW연계전공우수학생 장학생\n" +
-                    "마지막으로 참여가 높을수록 장학금을 주는 스마일리지 장학금\n" +
-                    "이것 말고도 장학금 종류는 많이있어요 (행복)";
+                    "첫번째는 성적장학금 성적을 잘받은 일부분만 순서대로 장학금을 주는 제도에요 \n\n" +
+                    "두번째는 AI심화트랙을 참여하면 지급하는 우수학생 장학금 \n\n" +
+                    "세번째는 SW튜터링 우수장학으로 SW전공자 중에서 튜터링의 튜터에게 지급해주는 장학 \n\n" +
+                    "네번째는 SW연계전공에 참여하는 학생에게 지급되는 SW연계전공우수학생 장학생\n\n" +
+                    "마지막으로 참여가 높을수록 장학금을 주는 스마일리지 장학금\n\n" +
+                    "이것 말고도 많은 장학금 종류가 있어요 (행복)";
         } else if(data.contains("배움")){
             return "저의 학과에서 1학년 때는 주로 다양한 교양배우며 \n" +
                     "2학년때는 기초 프로그래밍언어나 자료구조, 네트워크, 이산수학을 배워요\n" +
@@ -174,8 +175,8 @@ public class ChatData {
 
         HashMap<String,Object> quickRepl6 = new HashMap<>();
         quickRepl6.put("action","message");
-        quickRepl6.put("label","기숙사");
-        quickRepl6.put("messageText","기숙사");
+        quickRepl6.put("label","지원");
+        quickRepl6.put("messageText","지원");
         quickReplies.add(quickRepl6);
 
         HashMap<String,Object> quickRepl7 = new HashMap<>();
