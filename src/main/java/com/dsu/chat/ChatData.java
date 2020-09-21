@@ -1,6 +1,8 @@
 package com.dsu.chat;
 
 import com.dsu.chat.redis.RedisManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
@@ -8,6 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class ChatData {
+    private static final Logger logger = LoggerFactory.getLogger(ChatData.class);
 
     @Autowired
     RedisManager manager;
@@ -42,9 +45,9 @@ public class ChatData {
         if(data.contains("장학금")){return "장학금";}
         if(data.contains("Q")){
             String a = data.replace("Q"," ").replace(":","");
-            System.out.println(a);
+            logger.info(a);
             manager.setData(a);
-            System.out.println("해결완료");
+            logger.info("해결완료");
             return "질문";}
 
         return "없음";
