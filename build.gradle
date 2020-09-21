@@ -13,6 +13,7 @@ repositories {
 }
 
 dependencies {
+    compile("redis.clients:jedis")
     implementation 'org.springframework.boot:spring-boot-starter'
     implementation 'org.springframework.boot:spring-boot-starter-data-rest'
     implementation 'org.springframework.boot:spring-boot-devtools'
