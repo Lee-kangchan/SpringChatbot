@@ -1,11 +1,16 @@
 package com.dsu.chat;
 
+import com.dsu.chat.redis.RedisManager;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 public class ChatData {
 
+    @Autowired
+    RedisManager manager;
     public String request(String data){
         data.replace(" ",  "");
         if(data.contains("소프트웨어학과")||data.contains("소프트웨어")||data.contains("소웨")){
@@ -35,7 +40,9 @@ public class ChatData {
         if(data.contains("튜터링")){return "튜터링";}
         if(data.contains("분위기")){return "분위기";}
         if(data.contains("장학금")){return "장학금";}
-        if(data.contains("Q")){return "질문";}
+        if(data.contains("Q")){
+            manager.setData(data.replace("Q"," ").replace(":",""));
+            return "질문";}
 
         return "없음";
     }
