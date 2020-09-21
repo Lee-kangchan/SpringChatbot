@@ -15,7 +15,7 @@ public class JedisClient {
         Pool<Jedis> jedisPool;
         JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
         jedisPoolConfig.setMaxTotal(1000);
-        jedisPool = new JedisPool(jedisPoolConfig, "127.0.0.1", 6379, 10000000, "1111");
+        jedisPool = new JedisPool(jedisPoolConfig, "localhost", 6379, 10000000, "1111");
 
         return jedisPool.getResource();
     }
