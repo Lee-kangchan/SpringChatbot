@@ -41,7 +41,10 @@ public class ChatData {
         if(data.contains("분위기")){return "분위기";}
         if(data.contains("장학금")){return "장학금";}
         if(data.contains("Q")){
-            manager.setData(data.replace("Q"," ").replace(":",""));
+            String a = data.replace("Q"," ").replace(":","");
+            System.out.println(a);
+            manager.setData(a);
+            System.out.println("해결완료");
             return "질문";}
 
         return "없음";
