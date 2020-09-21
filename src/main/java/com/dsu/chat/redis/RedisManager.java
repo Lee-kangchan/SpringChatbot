@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import redis.clients.jedis.Jedis;
 
 import javax.annotation.Resource;
+import java.util.Set;
 
 @Service
 public class RedisManager {
@@ -11,16 +12,10 @@ public class RedisManager {
     @Resource(name = "jedis")
     Jedis jedis;
 
-    public void setData(String name , String listData){
-        jedis.select(10);
-        jedis.set(listData,name);
+    public void setData(String name){
+        jedis.sadd("data",name);
     }
-    public String getData(String chat){
-        jedis.select(10);
-        if (jedis.get(chat)!=null){
-            System.out.println(jedis.get(chat));
-            return jedis.get(chat);
-        }
-        return "x";
+    public Set<String> getData(){
+        return jedis.smembers("data");
     }
 }
