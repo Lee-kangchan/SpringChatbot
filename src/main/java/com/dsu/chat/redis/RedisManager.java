@@ -47,11 +47,8 @@ public class RedisManager {
 
     //Button Data 있으면 출력 없으면 null
     public Map<String,String> buttonData(String data){
-        Map<String,String> hash = jedis.hgetAll("button");
-        if(!hash.get(data).isEmpty()){
-            return hash;
-        }
-        return null;
+        return jedis.hgetAll(data);
+
     }
     // button이 필요한 데이터 추가
     public void setButton(String data, String label, String url){
