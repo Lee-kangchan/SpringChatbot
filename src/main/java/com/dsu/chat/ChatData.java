@@ -135,7 +135,7 @@ public class ChatData {
                     "마지막은 캘리포니아 산호세대학 4주 인턴십 프로그램\n" +
                     "해외에서 인턴십을 해보고 싶은 학생은 참 좋겠죠??";
         } else if(data.contains("질문")) {
-            return "질문해주셔서 감사합니다 2일내에 답변하겠습니다. 해당내용을 1~2일 뒤에 입력해주세요 ";
+            return "아직 운영되지 않아요 ㅠㅠ 질문을 원하시면 해당 버튼을 눌러 질문을 해주시길 바랍니다. ";
         }
         else{
             return"해당내용에 답변이 없어요... 답변을 얻고 싶으면 \"Q:내용\"으로 남겨주세요 2일내에 해당 답변을 등록하겠습니다 \n\n" +
@@ -224,6 +224,46 @@ public class ChatData {
 
 
         return quickReplies;
+    }
+    public Map<String, String> button2(String data){
+        Map<String, String> hash = new HashMap<>();
+        if(data.contains("행사")){
+            hash.put("label" , "행사 목록");
+            hash.put("action", "webLink");
+            hash.put("webLinkUrl", "http://mydex.dongseo.ac.kr/home.edu#");
+        }
+        if(data.contains("진로")){
+            hash.put("label" , "진로 ");
+            hash.put("action", "webLink");
+            hash.put("webLinkUrl", "https://www.youtube.com/watch?v=mA0qphOvyHs&feature=youtu.be");
+        }
+        if(data.contains("시설")){
+            hash.put("label" , "시설 목록");
+            hash.put("action", "webLink");
+            hash.put("webLinkUrl", "http://uni.dongseo.ac.kr/sw/index.php?pCode=MN1000010");
+        }
+        if(data.contains("지원")){
+            hash.put("label" , "YouTube");
+            hash.put("action", "webLink");
+            hash.put("webLinkUrl", "https://www.youtube.com/watch?v=mA0qphOvyHs&feature=youtu.be");
+        }
+        if(data.contains("장학금")){
+            hash.put("label" , "YouTube");
+            hash.put("action", "webLink");
+            hash.put("webLinkUrl", "https://www.youtube.com/watch?v=mA0qphOvyHs&feature=youtu.be");
+        }
+        if(data.contains("배움")){
+            hash.put("label" , "YouTube");
+            hash.put("action", "webLink");
+            hash.put("webLinkUrl", "https://www.youtube.com/watch?v=mA0qphOvyHs&feature=youtu.be");
+        }
+        if(data.contains("질문")){
+            hash.put("label" , "입학Q&A");
+            hash.put("action", "webLink");
+            hash.put("webLinkUrl", "http://uni.dongseo.ac.kr/sw/index.php?pCode=MN1000019");
+
+        }
+        return null;
     }
     public String data(String data){
         Set<String> chat = manager.getData("text");
