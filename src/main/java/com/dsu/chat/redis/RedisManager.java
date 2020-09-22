@@ -13,11 +13,15 @@ public class RedisManager {
     Jedis jedis;
 
     public void setData(String name){
-        jedis.auth("1234");
         jedis.sadd("data",name);
     }
     public Set<String> getData(){
-        jedis.auth("1234");
         return jedis.smembers("data");
+    }
+
+
+    public String test(){
+        return jedis.get("hello");
+
     }
 }
