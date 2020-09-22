@@ -60,7 +60,7 @@ public class KKORestAPI {
 
             if(!hash.get("label").equals("0")) {
                 button.add(hash);
-                simpleText.put("buttons", hash);
+                simpleText.put("buttons", button);
 
             }
             rtnStr = chatdata.response(rtnStr);
