@@ -12,11 +12,8 @@ import redis.clients.jedis.util.Pool;
 public class JedisClient {
     @Bean
     public Jedis jedis() {
-        Pool<Jedis> jedisPool;
-        JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
-        jedisPoolConfig.setMaxTotal(1000);
-        jedisPool = new JedisPool(jedisPoolConfig, "chandis-001.36dxq7.0001.apn2.cache.amazonaws.com", 6379, 10000000, null);
+        Jedis jedis = new Jedis("chandis-001.36dxq7.0001.apn2.cache.amazonaws.com", 6379);
 
-        return jedisPool.getResource();
+        return jedis;
     }
 }
