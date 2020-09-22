@@ -27,11 +27,16 @@ public class KKORestAPI {
             String jsonInString = mapper.writeValueAsString(params);
             System.out.println(jsonInString);
 
+
             ChatData chatdata = new ChatData();
             /* 발화 처리 부분 * */
             HashMap<String, Object> userRequest = (HashMap<String, Object>) params.get("userRequest");
             String utter = userRequest.get("utterance").toString().replace("\n", "");
 
+            if(utter.contains("Q")){
+                String a = utter.replace("Q"," ").replace(":","");
+                managers.setData(a);
+            }
             String rtnStr = "";
             rtnStr = chatdata.response(chatdata.request(utter));
             /* 발화 처리 끝*/
