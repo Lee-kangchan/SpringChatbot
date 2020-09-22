@@ -109,10 +109,10 @@ public class KKORestAPI {
         logger.info(data.getValue());
         String[] label = data.getKey().split("#");
         int i =0;
-        for(i =0 ; i<= label.length; i++) {
+        for(i =1 ; i< label.length; i++) {
             logger.info(label[i]);
             managers.setData("text",  label[i]);
-            if(i>=1){
+            if(i>1){
                 managers.setData(label[i-1], label[i]);
             }
         }
