@@ -59,7 +59,7 @@ public class KKORestAPI {
 
             Map<String,String> hash = managers.buttonData(rtnStr);
 
-            if(hash != null){
+            if(!hash.isEmpty()){
                 button.put("button", hash);
                 outputs.add(button);
             }
