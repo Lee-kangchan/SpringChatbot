@@ -117,7 +117,7 @@ public class KKORestAPI {
             }
         }
 
-        managers.setResponse(label[i], data.getValue());
+        managers.setResponse(label[label.length-1], data.getValue());
     }
 
     @GetMapping(value = "/text/detail/{data}") // 채팅 value 데이터
