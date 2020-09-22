@@ -4,11 +4,12 @@ import com.dsu.chat.redis.RedisManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
 
-@Service
+@Controller
 public class ChatData {
     private static final Logger logger = LoggerFactory.getLogger(ChatData.class);
 
@@ -248,9 +249,10 @@ public class ChatData {
     public void setData(String data, String value){
         String[] label = data.split("#");
         int i =0;
-        for(i =0 ; i< label.length; i++) {
-            manager.setData("text", label[0]);
-            if(i>0){
+        for(i =0 ; i<= label.length; i++) {
+            logger.info(label[i]);
+            manager.setData("text",  label[i]);
+            if(i>=1){
                 manager.setData(label[i-1], label[i]);
             }
         }

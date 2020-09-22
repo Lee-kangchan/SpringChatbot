@@ -1,8 +1,11 @@
 package com.dsu.chat;
 
 
+import com.dsu.chat.Service.ChatObject;
 import com.dsu.chat.redis.RedisManager;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +17,7 @@ import java.util.*;
 public class KKORestAPI {
     @Autowired
     RedisManager managers;
+    private static final Logger logger = LoggerFactory.getLogger(KKORestAPI.class);
 
     //카카오톡 오픈빌더로 리턴할 스킬 API
     @RequestMapping(value = "/kkoChat/v1", method = {RequestMethod.POST, RequestMethod.GET}, headers = {"Accept=application/json"})
@@ -98,10 +102,22 @@ public class KKORestAPI {
         return chatData.manager.getData(data);
     }
 
-    @PostMapping(value = "/text") // 채팅 데이터 추가
-    public void setText(@RequestBody String key, @RequestBody String value){
+    @PostMapping(value = "/text", consumes = "application/json", produces = "application/json") // 채팅 데이터 추가
+    public void setText(@RequestBody ChatObject data){
         ChatData chatData = new ChatData();
-        chatData.setData(key,value);
+        logger.info(data.getKey());
+        logger.info(data.getValue());
+        String[] label = data.getKey().split("#");
+        int i =0;
+        for(i =0 ; i<= label.length; i++) {
+            logger.info(label[i]);
+            managers.setData("text",  label[i]);
+            if(i>=1){
+                managers.setData(label[i-1], label[i]);
+            }
+        }
+
+        managers.setResponse(label[i], data.getValue());
     }
 
     @GetMapping(value = "/text/detail/{data}") // 채팅 value 데이터
