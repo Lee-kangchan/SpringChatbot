@@ -71,7 +71,7 @@ public class KKORestAPI {
             resultJson.put("template", template);
 
         } catch (Exception e) {
-
+            e.printStackTrace();
         }
 
         return resultJson;
