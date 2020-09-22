@@ -46,9 +46,7 @@ public class ChatData {
         if(data.contains("지원")){return "지원";}
         if(data.contains("Q")){
             String a = data.replace("Q"," ").replace(":","");
-            logger.info(a);
-            manager.setData(a);
-            logger.info("해결완료");
+
             return "질문";}
 
         return "없음";
