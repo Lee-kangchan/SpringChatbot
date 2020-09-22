@@ -52,7 +52,7 @@ public class KKORestAPI {
                 quickReplies = chatdata.list();
             }
 
-            managers.getData(chatdata.response(rtnStr));
+            chatdata.response(rtnStr);
             text.put("text", rtnStr);
             simpleText.put("simpleText", text);
             outputs.add(simpleText);
@@ -99,7 +99,7 @@ public class KKORestAPI {
     }
 
     @PostMapping(value = "/text") // 채팅 데이터 추가
-    public void setText(@RequestParam String key, @RequestParam String value){
+    public void setText(@RequestBody String key, @RequestBody String value){
         ChatData chatData = new ChatData();
         chatData.setData(key,value);
     }
