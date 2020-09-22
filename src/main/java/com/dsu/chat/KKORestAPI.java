@@ -39,7 +39,7 @@ public class KKORestAPI {
 
             if(utter.contains("Q")){
                 String a = utter.replace("Q"," ").replace(":","");
-                managers.setData("quetion",a);
+                managers.setData("question",a);
             }
             String rtnStr = "";
             rtnStr = chatdata.request(utter);
@@ -49,16 +49,17 @@ public class KKORestAPI {
             HashMap<String, Object> template = new HashMap<>();
             HashMap<String, Object> simpleText = new HashMap<>();
             HashMap<String, Object> text = new HashMap<>();
-            HashMap<String, Object> button = new HashMap<>();
+            List<Map<String, Object>> button = new ArrayList<>();
             List<HashMap<String,Object>> quickReplies = new ArrayList<>();
 
             if(rtnStr.contains("키워드")){
                 quickReplies = chatdata.list();
             }
 
-            Map<String,String> hash = chatdata.button2(rtnStr);
+            Map<String,Object> hash = chatdata.button2(rtnStr);
 
             if(!hash.get("label").equals("0")) {
+                button.add(hash);
                 simpleText.put("buttons", hash);
 
             }

@@ -225,8 +225,8 @@ public class ChatData {
 
         return quickReplies;
     }
-    public Map<String, String> button2(String data){
-        Map<String, String> hash = new HashMap<>();
+    public Map<String, Object> button2(String data){
+        Map<String, Object> hash = new HashMap<>();
         if(data.contains("행사")){
             hash.put("label" , "행사 목록");
             hash.put("action", "webLink");
