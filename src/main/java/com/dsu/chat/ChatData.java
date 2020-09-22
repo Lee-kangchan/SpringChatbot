@@ -245,7 +245,7 @@ public class ChatData {
 
         return null;
     }
-    public String setData(String data){
+    public void setData(String data){
         String[] label = data.split("#");
         for(int i =0 ; i< label.length; i++) {
             manager.setData("text", label[0]);
@@ -253,6 +253,7 @@ public class ChatData {
                 manager.setData(label[i-1], label[i]);
             }
         }
+
     }
 
 
