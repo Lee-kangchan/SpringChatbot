@@ -58,14 +58,15 @@ public class KKORestAPI {
 
             Map<String,Object> hash = chatdata.button2(rtnStr);
 
-            if(!hash.get("label").equals("0")) {
-                button.add(hash);
-                simpleText.put("buttons", button);
 
-            }
             rtnStr = chatdata.response(rtnStr);
             text.put("text", rtnStr);
             simpleText.put("simpleText", text);
+            if(!hash.get("label").equals("0")) {
+                button.add(hash);
+                text.put("buttons", button);
+
+            }
             outputs.add(simpleText);
 
 
@@ -128,6 +129,68 @@ public class KKORestAPI {
         return managers.getResponse(data);
 
     }
+    @RequestMapping(value = "/kkoChat/v1", method = {RequestMethod.POST, RequestMethod.GET}, headers = {"Accept=application/json"})
+    public HashMap<String, Object> callAPI2(@RequestBody Map<String, Object> params, HttpServletRequest request, HttpServletResponse response) {
 
+        HashMap<String, Object> resultJson = new HashMap<>();
+
+        try {
+
+            ObjectMapper mapper = new ObjectMapper();
+            String jsonInString = mapper.writeValueAsString(params);
+            System.out.println(jsonInString);
+
+
+            ChatData chatdata = new ChatData();
+            /* 발화 처리 부분 * */
+            HashMap<String, Object> userRequest = (HashMap<String, Object>) params.get("userRequest");
+            String utter = userRequest.get("utterance").toString().replace("\n", "");
+
+            if(utter.contains("Q")){
+                String a = utter.replace("Q"," ").replace(":","");
+                managers.setData("question",a);
+            }
+            String rtnStr = "";
+            rtnStr = chatdata.request(utter);
+            /* 발화 처리 끝*/
+
+            List<HashMap<String, Object>> outputs = new ArrayList<>();
+            HashMap<String, Object> template = new HashMap<>();
+            HashMap<String, Object> simpleText = new HashMap<>();
+            HashMap<String, Object> text = new HashMap<>();
+            List<Map<String, Object>> button = new ArrayList<>();
+            List<HashMap<String,Object>> quickReplies = new ArrayList<>();
+
+            if(rtnStr.contains("키워드")){
+                quickReplies = chatdata.list();
+            }
+
+            Map<String,Object> hash = chatdata.button2(rtnStr);
+
+            if(!hash.get("label").equals("0")) {
+                button.add(hash);
+                simpleText.put("buttons", button);
+
+            }
+            rtnStr = chatdata.response(rtnStr);
+            text.put("text", rtnStr);
+            simpleText.put("simpleText", text);
+            outputs.add(simpleText);
+
+
+
+
+
+            template.put("outputs", outputs);
+            template.put("quickReplies", quickReplies);
+            resultJson.put("version", "2.0");
+            resultJson.put("template", template);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return resultJson;
+    }
 
 }
