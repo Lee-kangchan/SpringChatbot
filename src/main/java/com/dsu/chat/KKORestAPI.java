@@ -56,17 +56,18 @@ public class KKORestAPI {
                 quickReplies = chatdata.list();
             }
 
-            chatdata.response(rtnStr);
-            text.put("text", rtnStr);
-            simpleText.put("simpleText", text);
-            outputs.add(simpleText);
-
-            Map<String,String> hash = managers.buttonData(rtnStr);
-
+            Map<String,String> hash = chatdata.button2(rtnStr);
             if(!hash.isEmpty()){
                 button.put("button", hash);
                 outputs.add(button);
             }
+            rtnStr = chatdata.response(rtnStr);
+            text.put("text", rtnStr);
+            simpleText.put("simpleText", text);
+            outputs.add(simpleText);
+
+
+
 
 
             template.put("outputs", outputs);
