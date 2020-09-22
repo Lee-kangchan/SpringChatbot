@@ -57,9 +57,11 @@ public class KKORestAPI {
             }
 
             Map<String,String> hash = chatdata.button2(rtnStr);
-            if(!hash.isEmpty()){
+
+            if(!hash.get("label").equals("0")) {
                 button.put("button", hash);
                 outputs.add(button);
+
             }
             rtnStr = chatdata.response(rtnStr);
             text.put("text", rtnStr);

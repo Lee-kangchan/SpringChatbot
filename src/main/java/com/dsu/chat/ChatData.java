@@ -232,38 +232,41 @@ public class ChatData {
             hash.put("action", "webLink");
             hash.put("webLinkUrl", "http://mydex.dongseo.ac.kr/home.edu#");
         }
-        if(data.contains("진로")){
+        else if(data.contains("진로")){
             hash.put("label" , "진로 ");
             hash.put("action", "webLink");
             hash.put("webLinkUrl", "https://www.youtube.com/watch?v=mA0qphOvyHs&feature=youtu.be");
         }
-        if(data.contains("시설")){
+        else if(data.contains("시설")){
             hash.put("label" , "시설 목록");
             hash.put("action", "webLink");
             hash.put("webLinkUrl", "http://uni.dongseo.ac.kr/sw/index.php?pCode=MN1000010");
         }
-        if(data.contains("지원")){
+        else if(data.contains("지원")){
             hash.put("label" , "YouTube");
             hash.put("action", "webLink");
             hash.put("webLinkUrl", "https://www.youtube.com/watch?v=mA0qphOvyHs&feature=youtu.be");
         }
-        if(data.contains("장학금")){
+        else if(data.contains("장학금")){
             hash.put("label" , "YouTube");
             hash.put("action", "webLink");
             hash.put("webLinkUrl", "https://www.youtube.com/watch?v=mA0qphOvyHs&feature=youtu.be");
         }
-        if(data.contains("배움")){
+        else if(data.contains("배움")){
             hash.put("label" , "YouTube");
             hash.put("action", "webLink");
             hash.put("webLinkUrl", "https://www.youtube.com/watch?v=mA0qphOvyHs&feature=youtu.be");
         }
-        if(data.contains("질문")){
+        else if(data.contains("질문")){
             hash.put("label" , "입학Q&A");
             hash.put("action", "webLink");
             hash.put("webLinkUrl", "http://uni.dongseo.ac.kr/sw/index.php?pCode=MN1000019");
 
         }
-        return null;
+        else{
+            hash.put("label" , "0");
+        }
+        return hash;
     }
     public String data(String data){
         Set<String> chat = manager.getData("text");
