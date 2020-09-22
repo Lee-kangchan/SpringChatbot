@@ -35,7 +35,7 @@ public class KKORestAPI {
 
             if(utter.contains("Q")){
                 String a = utter.replace("Q"," ").replace(":","");
-                managers.setData(a);
+                managers.setData("quetion",a);
             }
             String rtnStr = "";
             rtnStr = chatdata.response(chatdata.request(utter));
@@ -45,16 +45,25 @@ public class KKORestAPI {
             HashMap<String, Object> template = new HashMap<>();
             HashMap<String, Object> simpleText = new HashMap<>();
             HashMap<String, Object> text = new HashMap<>();
-
+            HashMap<String, Object> button = new HashMap<>();
             List<HashMap<String,Object>> quickReplies = new ArrayList<>();
 
             if(rtnStr.contains("키워드")){
                 quickReplies = chatdata.list();
             }
 
+            managers.getData(rtnStr);
             text.put("text", rtnStr);
             simpleText.put("simpleText", text);
             outputs.add(simpleText);
+
+            Map<String,String> hash = managers.buttonData(rtnStr);
+
+            if(hash != null){
+                button.put("button", hash);
+                outputs.add(button);
+            }
+
 
             template.put("outputs", outputs);
             template.put("quickReplies", quickReplies);
@@ -67,12 +76,36 @@ public class KKORestAPI {
 
         return resultJson;
     }
-    @GetMapping(value = "/data")
-    public Set<String> userDate(){
-        return managers.getData();
+    @GetMapping(value = "/question") // 질문 목록
+    public Set<String> getQuetion() {
+        return managers.getData("question");
     }
 
-    @GetMapping(value = "/test")
-    public String redistest() {return managers.test();}
+    @PostMapping(value = "/question") // 질문 추가
+    public void setQuetion(@RequestParam String data) {
+        managers.setData("question",data);
+    }
+
+    @DeleteMapping(value = "/quetion/{data}") // 질문 삭제
+    public void delQuetion(@PathVariable String data){
+        managers.delData(data);
+    }
+
+    @GetMapping(value = "/text") // 채팅 데이터 목록
+    public Set<String> getText(){
+        return managers.getText();
+    }
+
+    @PostMapping(value = "/text") // 채팅 데이터 추가
+    public void setText(@RequestParam String key, @RequestParam String value){
+        managers.setText(key,value);
+    }
+
+    @GetMapping(value = "/text/detail/{data}") // 채팅 value 데이터
+    public String getDetailText(@PathVariable String data) {
+        return managers.getDetailText(data);
+
+    }
+
 
 }
