@@ -13,10 +13,10 @@ public class RedisManager {
     Jedis jedis;
 
     public void setData(String name){
-        jedis.set(name,"1");
+        jedis.sadd("data",name);
     }
     public Set<String> getData(){
-        return jedis.keys("*");
+        return jedis.smembers("data");
     }
 
 
