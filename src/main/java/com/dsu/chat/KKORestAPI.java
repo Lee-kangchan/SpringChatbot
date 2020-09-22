@@ -38,7 +38,7 @@ public class KKORestAPI {
                 managers.setData("quetion",a);
             }
             String rtnStr = "";
-            rtnStr = chatdata.response(chatdata.request(utter));
+            rtnStr = chatdata.request(utter);
             /* 발화 처리 끝*/
 
             List<HashMap<String, Object>> outputs = new ArrayList<>();
@@ -52,7 +52,7 @@ public class KKORestAPI {
                 quickReplies = chatdata.list();
             }
 
-            managers.getData(rtnStr);
+            managers.getData(chatdata.response(rtnStr));
             text.put("text", rtnStr);
             simpleText.put("simpleText", text);
             outputs.add(simpleText);
@@ -92,18 +92,21 @@ public class KKORestAPI {
     }
 
     @GetMapping(value = "/text") // 채팅 데이터 목록
-    public Set<String> getText(){
-        return managers.getText();
+    public Set<String> getText(String data){
+
+        ChatData chatData = new ChatData();
+        return chatData.manager.getData(data);
     }
 
     @PostMapping(value = "/text") // 채팅 데이터 추가
     public void setText(@RequestParam String key, @RequestParam String value){
-        managers.setText(key,value);
+        ChatData chatData = new ChatData();
+        chatData.setData(key,value);
     }
 
     @GetMapping(value = "/text/detail/{data}") // 채팅 value 데이터
     public String getDetailText(@PathVariable String data) {
-        return managers.getDetailText(data);
+        return managers.getResponse(data);
 
     }
 
