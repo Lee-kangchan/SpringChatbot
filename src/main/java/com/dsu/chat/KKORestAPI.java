@@ -67,4 +67,7 @@ public class KKORestAPI {
         return managers.getData();
     }
 
+    @GetMapping(value = "/test")
+    public String redistest() {return managers.test();}
+
 }
