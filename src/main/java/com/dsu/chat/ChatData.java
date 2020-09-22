@@ -4,16 +4,17 @@ import com.dsu.chat.redis.RedisManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
+@Service
 public class ChatData {
     private static final Logger logger = LoggerFactory.getLogger(ChatData.class);
 
     @Autowired
     RedisManager manager;
+
     public String request(String data){
         data.replace(" ",  "");
         if(data.contains("소프트웨어학과")||data.contains("소프트웨어")||data.contains("소웨")){
@@ -30,9 +31,9 @@ public class ChatData {
             }
 
         }
-        if(data.contains("배움")||data.contains("배우")||data.contains("가르")){return "배움";}
+        if(data.contains("배움")||data.contains("배우")||data.contains("가르")||data.contains("교육")||data.contains("배워")){return "배움";}
         if(data.contains("행사")||data.contains("축제")){ return "행사";}
-        if(data.contains("진로")){return "진로";}
+        if(data.contains("진로")||data.contains("취업")){return "진로";}
         if(data.contains("시설")){return "시설";}
         if(data.contains("미리")||data.contains("준비")||(data.contains("가기 전"))){return "준비";}
         if(data.contains("프로젝트")){return "프로젝트";}
@@ -222,5 +223,53 @@ public class ChatData {
 
 
         return quickReplies;
+    }
+    public String data(String data){
+        Set<String> chat = manager.getData("text");
+        Set<String> response ;
+        for(String i : chat){
+            if(data.contains(i)){
+                response = manager.getData(i);
+                for(String j : response) {
+                    if (data.contains(j)) {
+                        for(String result : manager.getData(j)){
+                            return result;
+                        }
+                    }
+                }
+                for(String result : response){
+                    return result;
+                }
+            }
+        }
+
+        return null;
+    }
+    public String setData(String data){
+        String[] label = data.split("#");
+        for(int i =0 ; i< label.length; i++) {
+            manager.setData("text", label[0]);
+            if(i>0){
+                manager.setData(label[i-1], label[i]);
+            }
+        }
+    }
+
+
+    public Map<String, String> getbutton(String data) {
+        Map<String, String> hash = manager.buttonData(data);
+        hash.put("label" , "");
+        hash.put("action", "webLink");
+        hash.put("webLinkUrl","");
+
+        return hash;
+    }
+
+    public void setButton(String data, String label, String webLinkUrl){
+        Map<String, String> hash = manager.buttonData(data);
+        hash.put("label" , "");
+        hash.put("action", "webLink");
+        hash.put("webLinkUrl","");
+
     }
 }
