@@ -133,7 +133,8 @@ public class ChatData {
                     "두번째는 6개월간 미국에 가는 미국 SAP\n" +
                     "세번째는 미국 CES와 연계한 2주 국제인턴십프로그램\n" +
                     "마지막은 캘리포니아 산호세대학 4주 인턴십 프로그램\n" +
-                    "해외에서 인턴십을 해보고 싶은 학생은 참 좋겠죠??";
+                    "해외에서 인턴십을 해보고 싶은 학생은 참 좋겠죠??" +
+                    "http://uni.dongseo.ac.kr/sw/index.php?pCode=MN1000019";
         } else if(data.contains("질문")) {
             return "아직 운영되지 않아요 ㅠㅠ 질문을 원하시면 해당 버튼을 눌러 질문을 해주시길 바랍니다. ";
         }
@@ -225,48 +226,56 @@ public class ChatData {
 
         return quickReplies;
     }
-    public HashMap<String, Object> button2(String data){
+    public List<HashMap<String, Object>> button2(String data){
+        List<HashMap<String ,Object>> list = new ArrayList<>();
         HashMap<String, Object> hash = new HashMap<>();
         if(data.contains("행사")){
             hash.put("label" , "행사 목록");
             hash.put("action", "webLink");
             hash.put("webLinkUrl", "http://mydex.dongseo.ac.kr/home.edu#");
+            list.add(hash);
         }
         else if(data.contains("진로")){
             hash.put("label" , "진로 ");
             hash.put("action", "webLink");
             hash.put("webLinkUrl", "https://www.youtube.com/watch?v=mA0qphOvyHs&feature=youtu.be");
+            list.add(hash);
         }
         else if(data.contains("시설")){
             hash.put("label" , "시설 목록");
             hash.put("action", "webLink");
             hash.put("webLinkUrl", "http://uni.dongseo.ac.kr/sw/index.php?pCode=MN1000010");
+            list.add(hash);
         }
         else if(data.contains("지원")){
             hash.put("label" , "YouTube");
             hash.put("action", "webLink");
             hash.put("webLinkUrl", "https://www.youtube.com/watch?v=mA0qphOvyHs&feature=youtu.be");
+            list.add(hash);
         }
         else if(data.contains("장학금")){
             hash.put("label" , "YouTube");
             hash.put("action", "webLink");
             hash.put("webLinkUrl", "https://www.youtube.com/watch?v=mA0qphOvyHs&feature=youtu.be");
+            list.add(hash);
         }
         else if(data.contains("배움")){
             hash.put("label" , "YouTube");
             hash.put("action", "webLink");
             hash.put("webLinkUrl", "https://www.youtube.com/watch?v=mA0qphOvyHs&feature=youtu.be");
+            list.add(hash);
         }
         else if(data.contains("질문")){
             hash.put("label" , "입학Q&A");
             hash.put("action", "webLink");
             hash.put("webLinkUrl", "http://uni.dongseo.ac.kr/sw/index.php?pCode=MN1000019");
-
+            list.add(hash);
         }
         else{
             hash.put("label" , "0");
+            list.add(hash);
         }
-        return hash;
+        return list;
     }
     public String data(String data){
         Set<String> chat = manager.getData("text");
