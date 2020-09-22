@@ -60,12 +60,13 @@ public class KKORestAPI {
 
 
             rtnStr = chatdata.response(rtnStr);
-            text.put("text", rtnStr);
             if(!hash.get("label").equals("0")) {
                 button.add(hash);
                 text.put("buttons", button);
-
             }
+            text.put("text", rtnStr);
+
+
             simpleText.put("simpleText", text);
             outputs.add(simpleText);
 
