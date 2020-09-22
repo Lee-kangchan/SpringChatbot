@@ -15,7 +15,7 @@ public class JedisClient {
         Pool<Jedis> jedisPool;
         JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
         jedisPoolConfig.setMaxTotal(1000);
-        jedisPool = new JedisPool(jedisPoolConfig, "172.31.0.135", 6379, 10000000, null);
+        jedisPool = new JedisPool(jedisPoolConfig, "chandis-001.36dxq7.0001.apn2.cache.amazonaws.com", 6379, 10000000, null);
 
         return jedisPool.getResource();
     }
