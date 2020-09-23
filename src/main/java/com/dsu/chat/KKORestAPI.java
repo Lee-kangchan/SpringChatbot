@@ -68,6 +68,7 @@ public class KKORestAPI {
                     rtnStr = managers.getResponse(i);
                 }
             }
+            logger.info(rtnStr);
             List<HashMap<String, Object>> outputs = new ArrayList<>();
             HashMap<String, Object> template = new HashMap<>();
             HashMap<String, Object> simpleText = new HashMap<>();
