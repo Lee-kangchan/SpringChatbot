@@ -44,7 +44,27 @@ public class KKORestAPI {
             String rtnStr = "";
             rtnStr = chatdata.request(utter);
             /* 발화 처리 끝*/
+            Set<String> rtn = new HashSet<>();
+            rtn = managers.getData("text");
 
+            int count = 0;
+            for(int j=0; j<3 ; j++) {
+                for (String i : rtn) {
+                    if (i.contains(utter)) {
+                        count++;
+                        rtn = managers.getData(i);
+                    }
+                }
+            }
+            for(String i : rtn){
+                rtnStr = managers.getResponse(i);
+            }
+            if(utter.contains("Q")){
+                rtnStr = managers.getResponse("질문");
+            }
+            if(count ==0){
+                 rtnStr = managers.getResponse("없음");
+            }
             List<HashMap<String, Object>> outputs = new ArrayList<>();
             HashMap<String, Object> template = new HashMap<>();
             HashMap<String, Object> simpleText = new HashMap<>();
@@ -63,10 +83,6 @@ public class KKORestAPI {
 
             simpleText.put("simpleText", text);
             outputs.add(simpleText);
-
-
-
-
 
             template.put("outputs", outputs);
             template.put("quickReplies", quickReplies);
@@ -118,12 +134,5 @@ public class KKORestAPI {
 
         managers.setResponse(label[label.length-1], data.getValue());
     }
-
-    @GetMapping(value = "/text/detail/{data}") // 채팅 value 데이터
-    public String getDetailText(@PathVariable String data) {
-        return managers.getResponse(data);
-
-    }
-
 
 }

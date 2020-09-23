@@ -232,6 +232,7 @@ public class ChatData {
 
         return quickReplies;
     }
+
     public List<HashMap<String, Object>> button2(String data){
         List<HashMap<String ,Object>> list = new ArrayList<>();
         HashMap<String, Object> hash = new HashMap<>();
@@ -282,58 +283,5 @@ public class ChatData {
             list.add(hash);
         }
         return list;
-    }
-    public String data(String data){
-        Set<String> chat = manager.getData("text");
-        Set<String> response ;
-        for(String i : chat){
-            if(data.contains(i)){
-                response = manager.getData(i);
-                for(String j : response) {
-                    if (data.contains(j)) {
-                        for(String result : manager.getData(j)){
-                            return result;
-                        }
-                    }
-                }
-                for(String result : response){
-                    return result;
-                }
-            }
-        }
-
-        return null;
-    }
-    public void setData(String data, String value){
-        String[] label = data.split("#");
-        int i =0;
-        for(i =0 ; i<= label.length; i++) {
-            logger.info(label[i]);
-            manager.setData("text",  label[i]);
-            if(i>=1){
-                manager.setData(label[i-1], label[i]);
-            }
-        }
-
-        manager.setResponse(label[i],value);
-
-    }
-
-
-    public Map<String, String> getbutton(String data) {
-        Map<String, String> hash = manager.buttonData(data);
-        hash.put("label" , "");
-        hash.put("action", "webLink");
-        hash.put("webLinkUrl","");
-
-        return hash;
-    }
-
-    public void setButton(String data, String label, String webLinkUrl){
-        Map<String, String> hash = manager.buttonData(data);
-        hash.put("label" , "");
-        hash.put("action", "webLink");
-        hash.put("webLinkUrl","");
-
     }
 }
