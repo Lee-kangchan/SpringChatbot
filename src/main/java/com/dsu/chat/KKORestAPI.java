@@ -48,14 +48,15 @@ public class KKORestAPI {
             rtn = managers.getData("text");
 
             int count = 0;
-            for(int j=0; j<3 ; j++) {
                 for (String i : rtn) {
                     if (i.contains(utter)) {
                         count++;
                         rtn = managers.getData(i);
+                        utter.replace("Q:" , "");
+                        break;
                     }
                 }
-            }
+
 
 
             if(utter.contains("Q")){
@@ -114,8 +115,8 @@ public class KKORestAPI {
         managers.delData(data);
     }
 
-    @GetMapping(value = "/text") // 채팅 데이터 목록
-    public Set<String> getText(String data){
+    @GetMapping(value = "/text/{data}") // 채팅 데이터 목록
+    public Set<String> getText(@PathVariable String data){
 
         ChatData chatData = new ChatData();
         return chatData.manager.getData(data);
