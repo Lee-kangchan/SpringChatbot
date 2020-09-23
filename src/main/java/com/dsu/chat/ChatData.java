@@ -60,18 +60,21 @@ public class ChatData {
                     "2. 아이디어 경진대회 : 주로 AI와 SW를 연동한 아이디어를 가지고 발표 \n\n" +
                     "3. 해커톤 경진대회 : 아이디어 상품을 직접 개발하는 대회\n\n " +
                     "4. 기업 견학 : 다양한 기업들을 견학하는 행사\n\n " +
-                    "이 외에 다양한 행사가 있어요 (행복) ";
+                    "이 외에 다양한 행사가 있어요 (행복) \n\n" +
+                    "link : http://mydex.dongseo.ac.kr/home.edu#";
         }
         else if(data.contains("진로")){
             return "소프트웨어 학과에서는 주로 웹 개발, 앱 개발 개발 쪽을 취업을 하고 있으며\n " +
                     "최근에 AI 관련된 것들이 많이 나와서 AI 전문가, 데이터 과학자 등 다양하게 진로를 선택 할 수 있어요 " +
                     "어디서나 소프트웨어가 사용되어 취업 분야는 굉장히 넓어요\n" +
-                    "저희 과 졸업생은 삼성SDS, LG전자, KAKAO 외에서도 매년 연세대, 고려대, 부산대 등 대학원에 진학하고 있어요 ";
+                    "저희 과 졸업생은 삼성SDS, LG전자, KAKAO 외에서도 매년 연세대, 고려대, 부산대 등 대학원에 진학하고 있어요 \n\n" +
+                    "YouTube : https://www.youtube.com/watch?v=mA0qphOvyHs&feature=youtu.be";
         }
         else if(data.contains("시설")){
             return "시설은 실습을 하는 공간은 컴퓨터가 전부 설치 되어있으며 " +
                     "공부 할 수 있는 공간도 많고 연구실에 들어가면 개인 자리와 컴퓨터를" +
-                    "지급 되어 편히 공부 할 수 있어요";
+                    "지급 되어 편히 공부 할 수 있어요\n\n" +
+                    "시설 종류 : http://uni.dongseo.ac.kr/sw/index.php?pCode=MN1000010";
         }
         else if(data.contains("준비")){
             return "학교 오기전 하면 좋은 것들은 아마 처음 배우는 컴퓨터 언어는 Python 이라는 언어를 배울거에요" +
@@ -121,22 +124,25 @@ public class ChatData {
                     "세번째는 SW튜터링 우수장학으로 SW전공자 중에서 튜터링의 튜터에게 지급해주는 장학 \n\n" +
                     "네번째는 SW연계전공에 참여하는 학생에게 지급되는 SW연계전공우수학생 장학생\n\n" +
                     "마지막으로 참여가 높을수록 장학금을 주는 스마일리지 장학금\n\n" +
-                    "이것 말고도 많은 장학금 종류가 있어요 (행복)";
+                    "이것 말고도 많은 장학금 종류가 있어요 (행복)\n\n" +
+                    "YouTube : https://www.youtube.com/watch?v=mA0qphOvyHs&feature=youtu.be";
         } else if(data.contains("배움")){
             return "저의 학과에서 1학년 때는 주로 다양한 교양배우며 \n" +
                     "2학년때는 기초 프로그래밍언어나 자료구조, 네트워크, 이산수학을 배워요\n" +
                     "3학년때는 인공지능, 소프트웨어 분석 및 설계 , 데이터베이스를 배우며\n" +
-                    "4학년때는 빅데이터 인공지능 심화적인 과목을 배우며 이때까지 배운 것으로 졸업작품을 만들어요";
+                    "4학년때는 빅데이터 인공지능 심화적인 과목을 배우며 이때까지 배운 것으로 졸업작품을 만들어요" +
+                    "YouTube : https://www.youtube.com/watch?v=mA0qphOvyHs&feature=youtu.be";
         } else if(data.contains("지원")){
             return "저희 과가 중심운영학과 이라 학생들이 입학하면 이런 지원을 해줍니다.\n" +
                     "첫번째는 전공튜터링, 산학프로젝트 운영 등에 있어 적극적인 지원을 해줘요 \n" +
                     "두번째는 6개월간 미국에 가는 미국 SAP\n" +
                     "세번째는 미국 CES와 연계한 2주 국제인턴십프로그램\n" +
                     "마지막은 캘리포니아 산호세대학 4주 인턴십 프로그램\n" +
-                    "해외에서 인턴십을 해보고 싶은 학생은 참 좋겠죠??" +
-                    "http://uni.dongseo.ac.kr/sw/index.php?pCode=MN1000019";
+                    "해외에서 인턴십을 해보고 싶은 학생은 참 좋겠죠?? \n\n" +
+                    "YouTube : https://www.youtube.com/watch?v=mA0qphOvyHs&feature=youtu.be";
         } else if(data.contains("질문")) {
-            return "아직 운영되지 않아요 ㅠㅠ 질문을 원하시면 해당 버튼을 눌러 질문을 해주시길 바랍니다. ";
+            return "아직 운영되지 않아요 ㅠㅠ 질문을 원하시면 해당 Link을 눌러 질문을 해주시길 바랍니다." +
+                    "\n\n QnA:http://uni.dongseo.ac.kr/sw/index.php?pCode=MN1000019 ";
         }
         else{
             return"해당내용에 답변이 없어요... 답변을 얻고 싶으면 \"Q:내용\"으로 남겨주세요 2일내에 해당 답변을 등록하겠습니다 \n\n" +

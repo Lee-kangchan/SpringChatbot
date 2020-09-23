@@ -56,11 +56,9 @@ public class KKORestAPI {
                 quickReplies = chatdata.list();
             }
 
-            List<HashMap<String,Object>> hash = chatdata.button2(rtnStr);
             rtnStr = chatdata.response(rtnStr);
 
             text.put("text", rtnStr);
-            text.put("buttons", hash);
 
 
             simpleText.put("simpleText", text);
