@@ -56,14 +56,17 @@ public class KKORestAPI {
                     }
                 }
             }
-            for(String i : rtn){
-                rtnStr = managers.getResponse(i);
-            }
+
+
             if(utter.contains("Q")){
                 rtnStr = managers.getResponse("질문");
             }
             if(count ==0){
                  rtnStr = managers.getResponse("없음");
+            }else{
+                for(String i : rtn){
+                    rtnStr = managers.getResponse(i);
+                }
             }
             List<HashMap<String, Object>> outputs = new ArrayList<>();
             HashMap<String, Object> template = new HashMap<>();
