@@ -33,7 +33,10 @@ public class RedisManager {
         jedis.srem(name);
     }
 
+    public Map<String, String> chat(){
+        return jedis.hgetAll("response");
 
+    }
 
     //response data
     public String getResponse (String data) {
