@@ -243,19 +243,19 @@
 $(document).ready(function(){
 	// Activate tooltip
 	$('[data-toggle="tooltip"]').tooltip();
-	
+
 	// Select/Deselect checkboxes
 	var checkbox = $('table tbody input[type="checkbox"]');
 	$("#selectAll").click(function(){
 		if(this.checked){
 			checkbox.each(function(){
-				this.checked = true;                        
+				this.checked = true;
 			});
 		} else{
 			checkbox.each(function(){
-				this.checked = false;                        
+				this.checked = false;
 			});
-		} 
+		}
 	});
 	checkbox.click(function(){
 		if(!this.checked){
@@ -403,8 +403,9 @@ $(document).ready(function(){
         type: "get",
         dataType: 'json',
         done: function(response){
-            console(response)
+            console.log(response)
             for(i in response){
+                console.log(i)
                 data = "<tr>\n" +
                 "\n" +
                 "<td colspan=\"2\">"+i[0]+"</td>\n" +
@@ -413,7 +414,8 @@ $(document).ready(function(){
                 "<a href=\"#editEmployeeModal\" class=\"edit\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"답변\">&#xE254;</i></a>\n" +
                 "<a href=\"#deleteEmployeeModal\" class=\"delete\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"삭제\">&#xE872;</i></a>\n" +
                 "</td>\n" +
-                "</tr>" 
+                "</tr>"
+                $("#databody").append(data);
             }
         },
         fail : function(error){
