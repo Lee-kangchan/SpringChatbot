@@ -115,11 +115,10 @@ public class KKORestAPI {
         managers.delData(data);
     }
 
-    @GetMapping(value = "/text/{data}") // 채팅 데이터 목록
-    public Set<String> getText(@PathVariable String data){
+    @GetMapping(value = "/text") // 채팅 데이터 목록
+    public Map<String, String> getText(){
 
-        ChatData chatData = new ChatData();
-        return chatData.manager.getData(data);
+        return managers.chat();
     }
 
     @PostMapping(value = "/text", consumes = "application/json", produces = "application/json") // 채팅 데이터 추가
@@ -139,5 +138,9 @@ public class KKORestAPI {
 
         managers.setResponse(label[label.length-1], data.getValue());
     }
+    @DeleteMapping(value = "/text/{data}")
+    public void delText(@PathVariable String data){
+        managers.delData(data);
 
+    }
 }
