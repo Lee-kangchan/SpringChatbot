@@ -46,7 +46,7 @@ public class RedisManager {
 
     public List<Map<String, Object>> chat(){
 
-        Set<String> t = jedis.hkeys("*");
+        Set<String> t = jedis.hkeys("response");
         List<Map<String, Object>> list = new ArrayList<>();
         Map<String, Object> map ;
         for(String i : t){
