@@ -278,10 +278,10 @@ $(document).ready(function(){
 					</div>
 					<div class="col-sm-6" style="text-align: right;">
 
-						<a href="http://13.125.158.75:8180/static/data.html" class="edit" data-toggle="modal"><i style="color:white;" class="material-icons " data-toggle="tooltip" title="답변">question_answer</i></a>
+						<a href="http://13.125.158.75:8180/static/data.html" class="data" ><i style="color:white;" class="material-icons " data-toggle="tooltip" title="답변">question_answer</i></a>
 						&nbsp;
-						<a href="http://13.125.158.75:8180/static/Question.html" class="edit" data-toggle="modal"><i style="color:white;" class="material-icons" data-toggle="tooltip" title="질문">help</i></a>&nbsp;
-						<a href="http://13.125.158.75:8180/static/login.html" class="edit" data-toggle="modal"><i style="color:white;" class="material-icons" data-toggle="tooltip" title="로그아웃">logout</i></a>
+						<a href="http://13.125.158.75:8180/static/Question.html" class="question" ><i style="color:white;" class="material-icons" data-toggle="tooltip" title="질문">help</i></a>&nbsp;
+						<a href="http://13.125.158.75:8180/static/login.html" class="login" ><i style="color:white;" class="material-icons" data-toggle="tooltip" title="로그아웃">logout</i></a>
 					</div>
 				</div>
 			</div>
@@ -396,14 +396,13 @@ $(document).ready(function(){
 $(document).ready(function(){
 	$.ajax({
             url: "http://13.125.158.75:8180/admin",
-            type: "post",
-            data : query,
+            type: "get",
             dataType: 'json',
             success: function(response){
                 if(response==1){
                 }
                 else{
-                  location.href("http://13.125.158.75:8180/static/login.html")
+                  location.href = 'http://13.125.158.75:8180/static/login.html'
                 }
             },
             error: function(error){
@@ -436,6 +435,15 @@ $(document).ready(function(){
         }
         
     })
+    $(".question").click(function(){
+    	location.href = 'http://13.125.158.75:8180/static/question.html'
+    });
+    $(".data").click(function(){
+    	location.href = 'http://13.125.158.75:8180/static/data.html'
+    });
+    $(".logout").click(function(){
+    	location.href = 'http://13.125.158.75:8180/static/login.html'
+    });
 })
 
 </script>
