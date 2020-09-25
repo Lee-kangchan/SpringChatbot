@@ -88,12 +88,15 @@
             url: "http://13.125.158.75:8180/reset",
             type: "get",
             success: function(){
+
             },
             error: function(error){
                 console.log(error)
             }
+
         })
-        $("btn_Yes").click(function(){
+
+        $("#btn-Yes").click(function(){
           var query = $("form[name=login]").serialize();
           $.ajax({
             url: "http://13.125.158.75:8180/login",
