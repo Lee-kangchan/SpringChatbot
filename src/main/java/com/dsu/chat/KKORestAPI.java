@@ -100,6 +100,26 @@ public class KKORestAPI {
 
         return resultJson;
     }
+    @PostMapping(value = "/login")
+    public String login(@RequestParam("id") String id, @RequestParam("pw") String pw){
+        if(id.equals("admin"))
+        {
+            if(pw.equals("manager")){
+                managers.login();
+                return "1";
+            }
+        }
+        return "0";
+    }
+    @GetMapping(value = "/admin")
+    public String admin() {
+
+        return managers.admin();
+    }
+    @GetMapping(value = "/reset")
+    public  void reset(){
+        managers.reset();
+    }
     @GetMapping(value = "/question") // 질문 목록
     public Set<String> getQuetion() {
         return managers.getData("question");
@@ -116,9 +136,14 @@ public class KKORestAPI {
     }
 
     @GetMapping(value = "/text") // 채팅 데이터 목록
-    public Map<String, String> getText(){
+    public List<Map<String, Object>> getText(){
 
         return managers.chat();
+    }
+
+    @PutMapping(value = "/text")
+    public void putText(@RequestBody ChatObject chat){
+        managers.putData(chat.getKey(), chat.getValue());
     }
 
     @PostMapping(value = "/text", consumes = "application/json", produces = "application/json") // 채팅 데이터 추가
