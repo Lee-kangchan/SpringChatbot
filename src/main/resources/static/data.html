@@ -278,10 +278,10 @@ $(document).ready(function(){
 					</div>
 					<div class="col-sm-6" style="text-align: right;">
 
-						<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i style="color:white;" class="material-icons " data-toggle="tooltip" title="답변">question_answer</i></a>
+						<a href="http://13.125.158.75:8180/static/data.html" class="edit" data-toggle="modal"><i style="color:white;" class="material-icons " data-toggle="tooltip" title="답변">question_answer</i></a>
 						&nbsp;
-						<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i style="color:white;" class="material-icons" data-toggle="tooltip" title="질문">help</i></a>&nbsp;
-						<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i style="color:white;" class="material-icons" data-toggle="tooltip" title="로그아웃">logout</i></a>
+						<a href="http://13.125.158.75:8180/static/Question.html" class="edit" data-toggle="modal"><i style="color:white;" class="material-icons" data-toggle="tooltip" title="질문">help</i></a>&nbsp;
+						<a href="http://13.125.158.75:8180/static/login.html" class="edit" data-toggle="modal"><i style="color:white;" class="material-icons" data-toggle="tooltip" title="로그아웃">logout</i></a>
 					</div>
 				</div>
 			</div>
@@ -331,11 +331,7 @@ $(document).ready(function(){
 				</div>
 				<div class="modal-body">
 					<div class="form-group">
-						<label>키워드 (#으로 여러개 추가가능 #동서#동서대 )  </label>
-						<input name = "key" type="text" class="form-control" required>
-					</div>
-					<div class="form-group">
-						<label>응답할 내용</label>
+						<label>변경할 내용</label>
 						<input name = "value" type="text" class="form-control" required>
 					</div>
 				</div>
@@ -398,6 +394,23 @@ $(document).ready(function(){
 
 <script>
 $(document).ready(function(){
+	$.ajax({
+            url: "http://13.125.158.75:8180/admin",
+            type: "post",
+            data : query,
+            dataType: 'json',
+            success: function(response){
+                if(response==1){
+                }
+                else{
+                  location.href("http://13.125.158.75:8180/static/login.html")
+                }
+            },
+            error: function(error){
+                console.log(error)
+            }
+
+        })
     $.ajax({
         url: "http://13.125.158.75:8180/text",
         type: "get",
@@ -408,8 +421,8 @@ $(document).ready(function(){
                 console.log(i)
                 data = "<tr>\n" +
                 "\n" +
-                "<td colspan=\"2\">"+i[0]+"</td>\n" +
-                "<td colspan=\"3\">"+i[1] + "</td>\n" +
+                "<td colspan=\"2\">"+i.key+"</td>\n" +
+                "<td colspan=\"3\">"+i.value + "</td>\n" +
                 "<td colspan=\"1\">\n" +
                 "<a href=\"#editEmployeeModal\" class=\"edit\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"답변\">&#xE254;</i></a>\n" +
                 "<a href=\"#deleteEmployeeModal\" class=\"delete\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"삭제\">&#xE872;</i></a>\n" +
