@@ -243,19 +243,19 @@
 $(document).ready(function(){
 	// Activate tooltip
 	$('[data-toggle="tooltip"]').tooltip();
-	
+
 	// Select/Deselect checkboxes
 	var checkbox = $('table tbody input[type="checkbox"]');
 	$("#selectAll").click(function(){
 		if(this.checked){
 			checkbox.each(function(){
-				this.checked = true;                        
+				this.checked = true;
 			});
 		} else{
 			checkbox.each(function(){
-				this.checked = false;                        
+				this.checked = false;
 			});
-		} 
+		}
 	});
 	checkbox.click(function(){
 		if(!this.checked){
@@ -273,6 +273,13 @@ $(document).ready(function(){
 				<div class="row">
 					<div class="col-sm-6">
 						<h2>동서대학교 <b>소프트웨어학과 관리자 페이지</b></h2>
+					</div>
+					<div class="col-sm-6" style="text-align: right;">
+
+						<a href="http://13.125.158.75:8180/static/data.html" class="edit" data-toggle="modal"><i style="color:white;" class="material-icons " data-toggle="tooltip" title="답변">question_answer</i></a>
+						&nbsp;
+						<a href="http://13.125.158.75:8180/static/Question.html" class="edit" data-toggle="modal"><i style="color:white;" class="material-icons" data-toggle="tooltip" title="질문">help</i></a>&nbsp;
+						<a href="http://13.125.158.75:8180/static/login.html" class="edit" data-toggle="modal"><i style="color:white;" class="material-icons" data-toggle="tooltip" title="로그아웃">logout</i></a>
 					</div>
 				</div>
 			</div>
