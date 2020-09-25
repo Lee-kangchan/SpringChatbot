@@ -195,13 +195,13 @@ public class ChatData {
         HashMap<String,Object> quickRepl8 = new HashMap<>();
         quickRepl8.put("action","message");
         quickRepl8.put("label","학과장점");
-        quickRepl8.put("messageText","소웨장점");
+        quickRepl8.put("messageText","장점");
         quickReplies.add(quickRepl6);
 
         HashMap<String,Object> quickRepl9 = new HashMap<>();
         quickRepl9.put("action","message");
         quickRepl9.put("label","소웨인재상");
-        quickRepl9.put("messageText","소웨인재상");
+        quickRepl9.put("messageText","인재상");
         quickReplies.add(quickRepl9);
 
         HashMap<String,Object> quickRepl10 = new HashMap<>();
