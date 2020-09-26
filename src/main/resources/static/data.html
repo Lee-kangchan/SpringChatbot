@@ -387,9 +387,7 @@ $(document).ready(function(){
 <script>
 
 $(document).ready(function(){
-	var data = $(this).parents("tr").chlidren().val();
-    	$("#cancelData").val(data);
-    	$("#updataData").val(data);
+
 	$.ajax({
             url: "http://13.125.158.75:8180/admin",
             type: "get",
@@ -402,6 +400,7 @@ $(document).ready(function(){
         			type: "get",
         			dataType: 'json',
         			success: function(response){
+
             			console.log(response)
             			for(i in response){
                 		console.log(i)
@@ -416,6 +415,9 @@ $(document).ready(function(){
                 		"</tr>"
                 		$("#databody").append(data);
                 		$("#count").val(response.length);
+                		var data = $(".key").parents("tr").chlidren().val();
+    						$("#cancelData").val(data);
+    						$("#updataData").val(data);
             		}
         		},
         			error: function(error){
