@@ -320,9 +320,10 @@ $(document).ready(function(){
 					<h4 class="modal-title">수정 </h4>
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 				</div>
+
 				<div class="modal-body">
 					<div class="form-group">
-						<label>변경할 내용</label>
+						<label><strong id="updateData"> </strong>변경할 내용</label>
 						<input name = "value" type="text" class="form-control" required>
 					</div>
 				</div>
@@ -345,11 +346,11 @@ $(document).ready(function(){
 				<div class="modal-body">
 					<div class="form-group">
 						<label>키워드 (#으로 여러개 추가가능 #동서#동서대 )  </label>
-						<input name = "key" type="text" class="form-control" required>
+						<input class="keyward" name = "key" type="text" class="form-control" required>
 					</div>
 					<div class="form-group">
 						<label>응답할 내용</label>
-						<input name = "value" type="text" class="form-control" required>
+						<input class= "response "name = "value" type="text" class="form-control" required>
 					</div>
 				</div>
 			</form>
@@ -386,6 +387,9 @@ $(document).ready(function(){
 <script>
 
 $(document).ready(function(){
+	var data = $(this).parents("tr").chlidren().val();
+    	$("#cancelData").val(data);
+    	$("#updataData").val(data);
 	$.ajax({
             url: "http://13.125.158.75:8180/admin",
             type: "get",
@@ -443,16 +447,17 @@ $(document).ready(function(){
     	$.ajax({
     	   url: "http://13.125.158.75:8180/text",
             type: "post",
-            data: "{ \"key\" : \""+$('#key').val() +"\",  \"value\" : \""+$('#value').val() +"\"  } ",
+            data: ""{\n" +
+                "    \"key\":\""+ $(".keyward).val()"+"\",\n" +
+                "    \"value\" : \"" + $(".response").val() + "\"\n" +
+                "}"",
             dataType: 'json',
+            contentType : "application/json; charset=UTF-8",
             success: function(response){
             }
     	})
     })
-    $(".delete").click(function(){
-    	var data = $(this).parents("tr").chlidren().val();
-    	$("#deleteData").val(data);
-    })
+
 })
 
 </script>
