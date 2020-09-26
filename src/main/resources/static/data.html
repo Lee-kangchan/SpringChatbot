@@ -440,14 +440,14 @@ $(document).ready(function(){
     	location.href = 'http://13.125.158.75:8180/static/login.html'
     });
     $("#insert").click(function(){
-    	$.ajax(){
+    	$.ajax({
     	   url: "http://13.125.158.75:8180/text",
             type: "post",
             data: "{ \"key\" : \""+$('#key').val() +"\",  \"value\" : \""+$('#value').val() +"\"  } ",
             dataType: 'json',
             success: function(response){
             }
-    	}
+    	})
     })
     $(".delete").click(function(){
     	var data = $(this).parents("tr").chlidren().val();
