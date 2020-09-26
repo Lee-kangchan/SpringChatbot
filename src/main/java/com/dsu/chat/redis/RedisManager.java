@@ -15,7 +15,6 @@ public class RedisManager {
     public void login(){
         jedis.set("admin","1");
         jedis.expire("admin", 3000);
-        jedis.close();
     }
     public String admin(){ // 관리자 세션 (30분동안 움직이지 않으면 챗봇에 대한 데이터를 받을 수 없음)
 
@@ -26,13 +25,11 @@ public class RedisManager {
         }
 
         jedis.expire("admin",1800);
-        jedis.close();
         return "1";
     }
     public void reset(){
         jedis.set("admin","1");
         jedis.expire("admin", 0);
-        jedis.close();
     }
 
     // 질문을 받는 공간
@@ -49,6 +46,7 @@ public class RedisManager {
     }
 
     public List<Map<String, Object>> chat(){
+
         Set<String> t = jedis.hkeys("response");
         List<Map<String, Object>> list = new ArrayList<>();
         Map<String, Object> map ;
@@ -58,7 +56,6 @@ public class RedisManager {
             map.put("value", jedis.hget("response",i));
             list.add(map);
         }
-        jedis.close();
         return list;
     }
     public void putData(String key,String value){
@@ -67,15 +64,11 @@ public class RedisManager {
 
     //response data
     public String getResponse (String data) {
-        String t = jedis.hget("response" , data);
-        jedis.close();
-        return t;
+        return jedis.hget("response" , data);
     }
     //response data insert
-
     public void setResponse(String key, String value){
         jedis.hset("response" , key , value);
-        jedis.close();
     }
 
 
