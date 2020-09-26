@@ -403,7 +403,7 @@ $(document).ready(function(){
                 		console.log(i)
                 		data = "<tr>\n" +
                 		"\n" +
-                		"<td colspan=\"1\" class = "key" >"+response[i].key+"</td>\n" +
+                		"<td colspan=\"1\" class = \"key\" >"+response[i].key+"</td>\n" +
                 		"<td colspan=\"4\">"+response[i].value + "</td>\n" +
                 		"<td colspan=\"1\">\n" +
                 		"<a href=\"#editEmployeeModal\" class=\"edit\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"답변\">&#xE254;</i></a>\n" +
@@ -441,8 +441,8 @@ $(document).ready(function(){
     });
     $("#insert").click(function(){
     	$.ajax(){
-    	   url: "http://13.125.158.75:8180/admin",
-            type: "get",
+    	   url: "http://13.125.158.75:8180/text",
+            type: "post",
             data: "{ \"key\" : \""+$('#key').val() +"\",  \"value\" : \""+$('#value').val() +"\"  } ",
             dataType: 'json',
             success: function(response){
