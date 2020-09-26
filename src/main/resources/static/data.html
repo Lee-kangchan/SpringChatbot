@@ -286,7 +286,7 @@ $(document).ready(function(){
 				</div>
 			</div>
 			<table class="table table-striped table-hover">
-				<thead>
+				<thead >
 				<tr>
 
 					<th colspan="2" style="text-align: center;">키워드</th>
@@ -298,13 +298,13 @@ $(document).ready(function(){
 					<th colspan="1" style="text-align: center;">답변/삭제</th>
 				</tr>
 				</thead>
-				<tbody id = "databody">
+				<tbody id = "databody" style="table-layout: fixed;height: auto">
 
 
 				</tbody>
 			</table>
 			<div class="clearfix">
-				<div class="hint-text">질문  <b id="count">0</b>개</div>
+				<div class="hint-text">답변  <b id="count">0</b>개</div>
 				<a href="#addEmployeeModal" class="edit" data-toggle="modal"><button style="float: right;"type="button" class="btn btn-primary">추가</button></a>
 
 			</div>
@@ -352,11 +352,11 @@ $(document).ready(function(){
 						<input name = "value" type="text" class="form-control" required>
 					</div>
 				</div>
+			</form>
 				<div class="modal-footer">
 					<input type="button" class="btn btn-default" data-dismiss="modal" value="취소">
-					<input type="submit" class="btn btn-info" value="저장">
+					<input type="submit" id="insert" class="btn btn-info" value="저장">
 				</div>
-			</form>
 		</div>
 	</div>
 </div>
@@ -370,7 +370,7 @@ $(document).ready(function(){
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 				</div>
 				<div class="modal-body">
-					<p>해당 답변을 삭제하시겠습니까?</p>
+					<p><strong id="cancelData"></strong>해당 답변을 삭제하시겠습니까?</p>
 					<p class="text-warning"><small>복구 못하며 다시 추가 해야합니다.</small></p>
 				</div>
 				<div class="modal-footer">
@@ -403,14 +403,15 @@ $(document).ready(function(){
                 		console.log(i)
                 		data = "<tr>\n" +
                 		"\n" +
-                		"<td colspan=\"2\">"+response[i].key+"</td>\n" +
-                		"<td colspan=\"3\">"+response[i].value + "</td>\n" +
+                		"<td colspan=\"1\" class = "key" >"+response[i].key+"</td>\n" +
+                		"<td colspan=\"4\">"+response[i].value + "</td>\n" +
                 		"<td colspan=\"1\">\n" +
                 		"<a href=\"#editEmployeeModal\" class=\"edit\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"답변\">&#xE254;</i></a>\n" +
                	 		"<a href=\"#deleteEmployeeModal\" class=\"delete\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"삭제\">&#xE872;</i></a>\n" +
                 		"</td>\n" +
                 		"</tr>"
                 		$("#databody").append(data);
+                		$("#count").val(response.length);
             		}
         		},
         			error: function(error){
@@ -438,6 +439,20 @@ $(document).ready(function(){
     $(".logout").click(function(){
     	location.href = 'http://13.125.158.75:8180/static/login.html'
     });
+    $("#insert").click(function(){
+    	$.ajax(){
+    	   url: "http://13.125.158.75:8180/admin",
+            type: "get",
+            data: "{ \"key\" : \""+$('#key').val() +"\",  \"value\" : \""+$('#value').val() +"\"  } ",
+            dataType: 'json',
+            success: function(response){
+            }
+    	}
+    })
+    $(".delete").click(function(){
+    	var data = $(this).parents("tr").chlidren().val();
+    	$("#deleteData").val(data);
+    })
 })
 
 </script>
