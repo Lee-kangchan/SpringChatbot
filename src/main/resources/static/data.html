@@ -299,15 +299,6 @@ $(document).ready(function(){
 				</tr>
 				</thead>
 				<tbody id = "databody">
-				<tr>
-
-					<td colspan="2">Thomas Hardy</td>
-					<td colspan="3">Thomas Hardy</td>
-					<td colspan="1">
-						<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="답변">&#xE254;</i></a>
-						<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="삭제">&#xE872;</i></a>
-					</td>
-				</tr>
 
 
 				</tbody>
@@ -393,6 +384,7 @@ $(document).ready(function(){
 </body>
 
 <script>
+
 $(document).ready(function(){
 	$.ajax({
             url: "http://13.125.158.75:8180/admin",
@@ -400,6 +392,32 @@ $(document).ready(function(){
             dataType: 'json',
             success: function(response){
                 if(response==1){
+                   $.ajax({
+        			url: "http://13.125.158.75:8180/text",
+        			async : false,
+        			type: "get",
+        			dataType: 'json',
+        			success: function(response){
+            			console.log(response)
+            			for(i in response){
+                		console.log(i)
+                		data = "<tr>\n" +
+                		"\n" +
+                		"<td colspan=\"2\">"+response[i].key+"</td>\n" +
+                		"<td colspan=\"3\">"+response[i].value + "</td>\n" +
+                		"<td colspan=\"1\">\n" +
+                		"<a href=\"#editEmployeeModal\" class=\"edit\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"답변\">&#xE254;</i></a>\n" +
+               	 		"<a href=\"#deleteEmployeeModal\" class=\"delete\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"삭제\">&#xE872;</i></a>\n" +
+                		"</td>\n" +
+                		"</tr>"
+                		$("#databody").append(data);
+            		}
+        		},
+        			error: function(error){
+            			console.log(error)
+        			}
+
+   				 })
                 }
                 else{
                   location.href = 'http://13.125.158.75:8180/static/login.html'
@@ -410,31 +428,7 @@ $(document).ready(function(){
             }
 
         })
-    $.ajax({
-        url: "http://13.125.158.75:8180/text",
-        type: "get",
-        dataType: 'json',
-        success: function(response){
-            console.log(response)
-            for(i in response){
-                console.log(i)
-                data = "<tr>\n" +
-                "\n" +
-                "<td colspan=\"2\">"+i.key+"</td>\n" +
-                "<td colspan=\"3\">"+i.value + "</td>\n" +
-                "<td colspan=\"1\">\n" +
-                "<a href=\"#editEmployeeModal\" class=\"edit\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"답변\">&#xE254;</i></a>\n" +
-                "<a href=\"#deleteEmployeeModal\" class=\"delete\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"삭제\">&#xE872;</i></a>\n" +
-                "</td>\n" +
-                "</tr>"
-                $("#databody").append(data);
-            }
-        },
-        error: function(error){
-            console.log(error)
-        }
-        
-    })
+
     $(".question").click(function(){
     	location.href = 'http://13.125.158.75:8180/static/question.html'
     });
