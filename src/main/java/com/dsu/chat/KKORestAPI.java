@@ -67,7 +67,7 @@ public class KKORestAPI {
                     rtnStr = managers.getResponse("관리자가존재");
                 }
             }
-            if(count ==0){
+            else if(count ==0){
                  rtnStr = managers.getResponse("없음");
             }else{
                 for(String i : rtn){

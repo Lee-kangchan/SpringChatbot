@@ -373,7 +373,7 @@ $(document).ready(function(){
 							$.ajax({
 								url : "http://13.125.158.75:8180/question",
 								type : "delete",
-								data : "{ \"question\" : \""+data+" \" ",
+								data : "{ \"question\" : \""+data+"\" ",
 								dataType : 'JSON',
 								contentType : "application/json; charset=UTF-8",
 								success : function(){
@@ -381,21 +381,7 @@ $(document).ready(function(){
 								}
 							})
 						})
-						$(".edit").click(function(){
-							$.ajax({
-			   					url: "http://13.125.158.75:8180/text",
-								type: "post",
-								data: "{\n" +
-									"    \"key\":\""+ $(".keyward").val()+"\",\n" +
-									"    \"value\" : \"" + $(".response2").val() + "\"\n" +
-									"}",
-								dataType: 'JSON',
-								contentType : "application/json; charset=UTF-8",
-								success: function(response){
-									console.log("추가완료!!!!!!!!!")
-								}
-							})
-						})
+						
 					},
 						error: function(error){
 							console.log(error)
@@ -422,7 +408,21 @@ $(document).ready(function(){
 		$(".logout").click(function(){
 			location.href = 'http://13.125.158.75:8180/static/login.html'
 		});
-		
+		$(".edit").click(function(){
+			$.ajax({
+				url: "http://13.125.158.75:8180/text",
+				type: "post",
+				data: "{\n" +
+					"    \"key\":\""+ $(".keyward").val()+"\",\n" +
+					"    \"value\" : \""+ $(".response2").val() +"\"\n" +
+					"}",
+				dataType: 'JSON',
+				contentType : "application/json; charset=UTF-8",
+				success: function(response){
+					console.log("추가완료!!!!!!!!!")
+				}
+			})
+		})
 	
 	
 	})
