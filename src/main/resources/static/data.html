@@ -295,7 +295,7 @@ $(document).ready(function(){
 					<th colspan="3" style="text-align: center;">답변</th>
 
 					</th>
-					<th colspan="1" style="text-align: center;">답변/삭제</th>
+					<th colspan="1" style="text-align: center;">삭제</th>
 				</tr>
 				</thead>
 				<tbody id = "databody" style="table-layout: fixed;height: auto">
@@ -317,13 +317,13 @@ $(document).ready(function(){
 		<div class="modal-content">
 			<form>
 				<div class="modal-header">
-					<h4 class="modal-title">수정 </h4>
+					<h4 class="modal-title">#<strong></strong> 수정 </h4>
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 				</div>
 
 				<div class="modal-body">
 					<div class="form-group">
-						<label><strong id="updateData"> </strong>변경할 내용</label>
+						<label>변경할 내용</label>
 						<input name = "value" type="text" class="form-control" required>
 					</div>
 				</div>
@@ -350,7 +350,7 @@ $(document).ready(function(){
 					</div>
 					<div class="form-group">
 						<label>응답할 내용</label>
-						<input class= "response "name = "value" type="text" class="form-control" required>
+						<input class= "response2"name = "value" type="text" class="form-control" required>
 					</div>
 				</div>
 			</form>
@@ -404,21 +404,28 @@ $(document).ready(function(){
             			console.log(response)
             			for(i in response){
                 		console.log(i)
-                		data = "<tr>\n" +
+                		data = "<tr style=\"table-layout: fixed;height: auto\">\n" +
                 		"\n" +
                 		"<td colspan=\"1\" class = \"key\" >"+response[i].key+"</td>\n" +
                 		"<td colspan=\"4\">"+response[i].value + "</td>\n" +
                 		"<td colspan=\"1\">\n" +
-                		"<a href=\"#editEmployeeModal\" class=\"edit\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"답변\">&#xE254;</i></a>\n" +
-               	 		"<a href=\"#deleteEmployeeModal\" class=\"delete\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"삭제\">&#xE872;</i></a>\n" +
+               	 		"<a  class=\"delete\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"삭제\">&#xE872;</i></a>\n" +
                 		"</td>\n" +
                 		"</tr>"
                 		$("#databody").append(data);
-                		$("#count").val(response.length);
-                		var data = $(".key").parents("tr").chlidren().val();
-    						$("#cancelData").val(data);
-    						$("#updataData").val(data);
+                		$("#count").text(response.length);
+
             		}
+            		 $(".delete").click(function(){
+    					var data = $(this).closest('tr').children("td").text();
+    					$.ajax({
+    						url : "http://13.125.158.75:8180/text/"+data +"",
+    						type : delete,
+    						success : function(){
+    						location.href = 'http://13.125.158.75:8180/static/data.html'
+    						}
+    					})
+   					})
         		},
         			error: function(error){
             			console.log(error)
@@ -456,9 +463,11 @@ $(document).ready(function(){
             dataType: 'JSON',
             contentType : "application/json; charset=UTF-8",
             success: function(response){
+    			location.href = 'http://13.125.158.75:8180/static/data.html'
             }
     	})
     })
+
 
 })
 
