@@ -41,8 +41,8 @@ public class RedisManager {
         return jedis.smembers(key);
     }
     //질문 처리 했으면 삭제
-    public void delData(String name){
-        jedis.srem(name);
+    public void delData(String key , String member){
+        jedis.srem(key, member);
     }
 
     public List<Map<String, Object>> chat(){
@@ -69,6 +69,9 @@ public class RedisManager {
     //response data insert
     public void setResponse(String key, String value){
         jedis.hset("response" , key , value);
+    }
+    public void delResponse(String key){
+        jedis.hdel("response", key);
     }
 
 
