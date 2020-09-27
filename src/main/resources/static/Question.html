@@ -319,7 +319,7 @@ $(document).ready(function(){
 						<input class="keyward" name = "key" type="text" class="form-control" required>
 					</div>
 					<div class="form-group">
-						<label>응답할 내용</label>
+						<label>응답할 내용</label><br>
 						<input class="response2"name = "value" type="text" class="form-control" required>
 					</div>
 				</div>
@@ -360,7 +360,7 @@ $(document).ready(function(){
 							"<td colspan=\"5\" class = \"question\" >"+response[i]+"</td>\n" +
 							"<td colspan=\"1\">\n" +
 								"<a href=\"#editEmployeeModal\" class=\"edit\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Edit\">&#xE254;</i></a>"+
-								"<a  class=\"delete\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"삭제\">&#xE872;</i></a>\n" +
+								"<a href=\"#\" class=\"delete\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"삭제\">&#xE872;</i></a>\n" +
 							"</td>\n" +
 							"</tr>"
 							$("#databody").append(data);
@@ -392,6 +392,7 @@ $(document).ready(function(){
 								dataType: 'JSON',
 								contentType : "application/json; charset=UTF-8",
 								success: function(response){
+									console.log("추가완료!!!!!!!!!")
 								}
 							})
 						})

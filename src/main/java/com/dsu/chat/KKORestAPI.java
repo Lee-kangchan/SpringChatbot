@@ -60,7 +60,12 @@ public class KKORestAPI {
 
 
             if(utter.contains("Q")){
-                rtnStr = managers.getResponse("질문");
+                if(managers.adminYN().equals("0")) {
+                    rtnStr = managers.getResponse("질문");
+                }
+                else {
+                    rtnStr = managers.getResponse("관리자가존재");
+                }
             }
             if(count ==0){
                  rtnStr = managers.getResponse("없음");
@@ -121,7 +126,7 @@ public class KKORestAPI {
         managers.reset();
     }
     @GetMapping(value = "/question") // 질문 목록
-    public List<String> getQuetion() {
+    public List<String> getQuestion() {
         List<String> question = new ArrayList<>();
         Set<String> data = managers.getData("question");
         for(String i : data){

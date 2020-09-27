@@ -16,6 +16,15 @@ public class RedisManager {
         jedis.set("admin","1");
         jedis.expire("admin", 3000);
     }
+    public String adminYN(){
+        Set<String> id = jedis.keys("*");
+        if(!id.contains("admin")){
+            return "0";
+        }
+        else {
+            return "1";
+        }
+    }
     public String admin(){ // 관리자 세션 (30분동안 움직이지 않으면 챗봇에 대한 데이터를 받을 수 없음)
 
 

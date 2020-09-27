@@ -292,7 +292,7 @@ $(document).ready(function(){
 					<th colspan="2" style="text-align: center;">키워드</th>
 
 					</th>
-					<th colspan="3" style="text-align: center;">답변</th>
+					<th colspan="4" style="text-align: center;">답변</th>
 
 					</th>
 					<th colspan="1" style="text-align: center;">삭제</th>
@@ -349,14 +349,14 @@ $(document).ready(function(){
 						<input class="keyward" name = "key" type="text" class="form-control" required>
 					</div>
 					<div class="form-group">
-						<label>응답할 내용</label>
+						<label>응답할 내용</label><br>
 						<input class= "response2"name = "value" type="text" class="form-control" required>
 					</div>
 				</div>
 			</form>
 				<div class="modal-footer">
 					<input type="button" class="btn btn-default" data-dismiss="modal" value="취소">
-					<input type="submit" id="insert" class="btn btn-info" value="저장">
+					<input type="submit"  data-dismiss="modal"id="insert" class="btn btn-info" value="저장">
 				</div>
 		</div>
 	</div>
@@ -409,7 +409,7 @@ $(document).ready(function(){
                 		"<td colspan=\"2\" class = \"key\" >"+response[i].key+"</td>\n" +
                 		"<td colspan=\"4\">"+response[i].value + "</td>\n" +
                 		"<td colspan=\"1\">\n" +
-               	 		"&nbsp;<a  class=\"delete\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"삭제\">&#xE872;</i></a>\n" +
+               	 		"&nbsp;<a  href=\"#\"class=\"delete\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"삭제\">&#xE872;</i></a>\n" +
                 		"</td>\n" +
                 		"</tr>"
                 		$("#databody").append(data);
