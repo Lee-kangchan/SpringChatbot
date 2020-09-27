@@ -408,9 +408,9 @@ $(document).ready(function(){
                 		data = "<tr style=\"table-layout: fixed;height: auto\">\n" +
                 		"\n" +
                 		"<td colspan=\"2\" class = \"key\" >"+response[i].key+"</td>\n" +
-                		"<td colspan=\"4\">"+response[i].value + "</td>\n" +
-                		"<td colspan=\"1\">\n" +
-               	 		"&nbsp;<a  href=\"#\"class=\"delete\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"삭제\">&#xE872;</i></a>\n" +
+                		"<td colspan=\"4\" style=\"table-layout: fixed;height: auto\">"+response[i].value + "</td>\n" +
+                		"<td colspan=\"1\" style=\"padding-left:5px\">\n" +
+               	 		"<a href=\"#\"class=\"delete\" data-toggle=\"modal\" ><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"삭제\">&#xE872;</i></a>\n" +
                 		"</td>\n" +
                 		"</tr>"
                 		$("#databody").append(data);
