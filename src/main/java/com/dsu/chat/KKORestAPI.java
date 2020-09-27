@@ -121,8 +121,13 @@ public class KKORestAPI {
         managers.reset();
     }
     @GetMapping(value = "/question") // 질문 목록
-    public Set<String> getQuetion() {
-        return managers.getData("question");
+    public List<String> getQuetion() {
+        List<String> question = new ArrayList<>();
+        Set<String> data = managers.getData("question");
+        for(String i : data){
+            question.add(i);
+        }
+        return question;
     }
 
     @PostMapping(value = "/question") // 질문 추가
