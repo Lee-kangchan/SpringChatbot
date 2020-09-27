@@ -276,10 +276,10 @@ $(document).ready(function(){
 					</div>
 					<div class="col-sm-6" style="text-align: right;">
 
-						<a href="http://13.125.158.75:8180/static/data.html" class="edit" data-toggle="modal"><i style="color:white;" class="material-icons " data-toggle="tooltip" title="답변">question_answer</i></a>
+						<a href="http://13.125.158.75:8180/static/data.html"  ><i style="color:white;" class="material-icons " data-toggle="tooltip" title="답변">question_answer</i></a>
 						&nbsp;
-						<a href="http://13.125.158.75:8180/static/Question.html" class="edit" data-toggle="modal"><i style="color:white;" class="material-icons" data-toggle="tooltip" title="질문">help</i></a>&nbsp;
-						<a href="http://13.125.158.75:8180/static/login.html" class="edit" data-toggle="modal"><i style="color:white;" class="material-icons" data-toggle="tooltip" title="로그아웃">logout</i></a>
+						<a href="http://13.125.158.75:8180/static/Question.html" ><i style="color:white;" class="material-icons" data-toggle="tooltip" title="질문">help</i></a>&nbsp;
+						<a href="http://13.125.158.75:8180/static/login.html" ><i style="color:white;" class="material-icons" data-toggle="tooltip" title="로그아웃">logout</i></a>
 					</div>
 				</div>
 			</div>
@@ -292,8 +292,8 @@ $(document).ready(function(){
 					</th>
 					<th colspan="1" style="text-align: center;">답변/삭제</th>
 				</tr>
-				</thead>
-				<tbody>
+				</thead > 
+				<tbody id="databody">
 				<tr>
 
 					<td colspan="5">Thomas Hardy</td>
@@ -307,44 +307,9 @@ $(document).ready(function(){
 				</tbody>
 			</table>
 			<div class="clearfix">
-				<div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
-				<ul class="pagination">
-					<li class="page-item disabled"><a href="#">Previous</a></li>
-					<li class="page-item"><a href="#" class="page-link">1</a></li>
-					<li class="page-item"><a href="#" class="page-link">2</a></li>
-					<li class="page-item active"><a href="#" class="page-link">3</a></li>
-					<li class="page-item"><a href="#" class="page-link">4</a></li>
-					<li class="page-item"><a href="#" class="page-link">5</a></li>
-					<li class="page-item"><a href="#" class="page-link">Next</a></li>
-				</ul>
+				<div class="hint-text">답변  <b id="count">0</b>개</div>
+				
 			</div>
-		</div>
-	</div>
-</div>
-<!-- Edit Modal HTML -->
-<div id="addEmployeeModal" class="modal fade">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<form>
-				<div class="modal-header">
-					<h4 class="modal-title">응답 추가</h4>
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				</div>
-				<div class="modal-body">
-					<div class="form-group">
-						<label>키워드</label>
-						<input name = "key" type="text" class="form-control" required>
-					</div>
-					<div class="form-group">
-						<label>응답할 내용</label>
-						<input name = "value" type="email" class="form-control" required>
-					</div>
-				</div>
-				<div class="modal-footer">
-					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-					<input type="submit" class="btn btn-success" value="Add">
-				</div>
-			</form>
 		</div>
 	</div>
 </div>
@@ -360,87 +325,117 @@ $(document).ready(function(){
 				<div class="modal-body">
 					<div class="form-group">
 						<label>키워드 (#으로 여러개 추가가능 #동서#동서대 )  </label>
-						<input name = "key" type="text" class="form-control" required>
+						<input class="keyward" name = "key" type="text" class="form-control" required>
 					</div>
 					<div class="form-group">
 						<label>응답할 내용</label>
-						<input name = "value" type="text" class="form-control" required>
+						<input class="response2"name = "value" type="text" class="form-control" required>
 					</div>
 				</div>
 				<div class="modal-footer">
 					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-					<input type="submit" class="btn btn-info" value="Save">
+					<input type="submit" class="btn btn-info" data-dismiss="modal" value="Save">
 				</div>
 			</form>
 		</div>
 	</div>
 </div>
 <!-- Delete Modal HTML -->
-<div id="deleteEmployeeModal" class="modal fade">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<form>
-				<div class="modal-header">
-					<h4 class="modal-title">Delete Employee</h4>
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				</div>
-				<div class="modal-body">
-					<p>Are you sure you want to delete these Records?</p>
-					<p class="text-warning"><small>This action cannot be undone.</small></p>
-				</div>
-				<div class="modal-footer">
-					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-					<input type="submit" class="btn btn-danger" value="Delete">
-				</div>
-			</form>
-		</div>
-	</div>
-</div>
+
 </body>
 
 <script>
-$.ajax({
-           url: "http://13.125.158.75:8180/admin",
-            type: "post",
-            data : query,
-            dataType: 'json',
-            success: function(response){
-                if(response==1){
-                }
-                else{
-                  location.href("http://13.125.158.75:8180/static/login.html")
-                }
-            },
-            error: function(error){
-                console.log(error)
-            }
 
-        })
-    $.ajax({
-        url: "http://13.125.158.75:8180/text",
-        type: "get",
-        dataType: 'json',
-        success: function(response){
-            console.log(response)
-            for(i in response){
-                console.log(i)
-                data = "<tr>\n" +
-                "\n" +
-                "<td colspan=\"2\">"+i.key+"</td>\n" +
-                "<td colspan=\"3\">"+i.value + "</td>\n" +
-                "<td colspan=\"1\">\n" +
-                "<a href=\"#editEmployeeModal\" class=\"edit\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"답변\">&#xE254;</i></a>\n" +
-                "<a href=\"#deleteEmployeeModal\" class=\"delete\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"삭제\">&#xE872;</i></a>\n" +
-                "</td>\n" +
-                "</tr>"
-                $("#databody").append(data);
-            }
-        },
-        error: function(error){
-            console.log(error)
-        }
-
-    })
-
-</script>
+	$(document).ready(function(){
+	
+		$.ajax({
+				url: "http://13.125.158.75:8180/admin",
+				type: "get",
+				dataType: 'json',
+				success: function(response){
+					if(response==1){
+					   $.ajax({
+						url: "http://13.125.158.75:8180/question",
+						async : false,
+						type: "get",
+						dataType: 'json',
+						success: function(response){
+	
+							console.log(response)
+							for(i in response){
+							console.log(i)
+							data = "<tr style=\"table-layout: fixed;height: auto\">\n" +
+							"\n" +
+							"<td colspan=\"5\" class = \"question\" >"+i+"</td>\n" +
+							"<td colspan=\"1\">\n" +
+								"<a href=\"#editEmployeeModal\" class=\"edit\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Edit\">&#xE254;</i></a>"+
+								"<a  class=\"delete\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"삭제\">&#xE872;</i></a>\n" +
+							"</td>\n" +
+							"</tr>"
+							$("#databody").append(data);
+							$("#count").text(response.length);
+	
+						}
+						 $(".delete").click(function(){
+							var data = $(this).closest('tr').children("td.question").text();
+							console.log(data);
+							$.ajax({
+								url : "http://13.125.158.75:8180/question"+data +"",
+								type : "delete",
+								data : "{ \"question\" : \""+data+" \" ",
+								dataType : 'JSON',
+								contentType : "application/json; charset=UTF-8",
+								success : function(){
+									location.href = 'http://13.125.158.75:8180/static/data.html'
+								}
+							})
+						})
+						$(".edit").click(function(){
+							$.ajax({
+			   					url: "http://13.125.158.75:8180/text",
+								type: "post",
+								data: "{\n" +
+									"    \"key\":\""+ $(".keyward").val()+"\",\n" +
+									"    \"value\" : \"" + $(".response2").val() + "\"\n" +
+									"}",
+								dataType: 'JSON',
+								contentType : "application/json; charset=UTF-8",
+								success: function(response){
+									location.href = 'http://13.125.158.75:8180/static/data.html'
+									$('#')
+								}
+							})
+						})
+					},
+						error: function(error){
+							console.log(error)
+						}
+	
+						})
+					}
+					else{
+					  location.href = 'http://13.125.158.75:8180/static/login.html'
+					}
+				},
+				error: function(error){
+					console.log(error)
+				}
+	
+			})
+	
+		$(".question").click(function(){
+			location.href = 'http://13.125.158.75:8180/static/question.html'
+		});
+		$(".data").click(function(){
+			location.href = 'http://13.125.158.75:8180/static/data.html'
+		});
+		$(".logout").click(function(){
+			location.href = 'http://13.125.158.75:8180/static/login.html'
+		});
+		
+	
+	
+	})
+	
+	</script>
 </html>
