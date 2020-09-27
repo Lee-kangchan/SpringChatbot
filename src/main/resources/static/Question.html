@@ -294,16 +294,7 @@ $(document).ready(function(){
 				</tr>
 				</thead > 
 				<tbody id="databody">
-				<tr>
-
-					<td colspan="5">Thomas Hardy</td>
-					<td colspan="1">
-						<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-						<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-					</td>
-				</tr>
-
-
+			
 				</tbody>
 			</table>
 			<div class="clearfix">
@@ -366,7 +357,7 @@ $(document).ready(function(){
 							console.log(i)
 							data = "<tr style=\"table-layout: fixed;height: auto\">\n" +
 							"\n" +
-							"<td colspan=\"5\" class = \"question\" >"+i+"</td>\n" +
+							"<td colspan=\"5\" class = \"question\" >"+response[i]+"</td>\n" +
 							"<td colspan=\"1\">\n" +
 								"<a href=\"#editEmployeeModal\" class=\"edit\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Edit\">&#xE254;</i></a>"+
 								"<a  class=\"delete\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"삭제\">&#xE872;</i></a>\n" +
@@ -401,8 +392,6 @@ $(document).ready(function(){
 								dataType: 'JSON',
 								contentType : "application/json; charset=UTF-8",
 								success: function(response){
-									location.href = 'http://13.125.158.75:8180/static/data.html'
-									$('#')
 								}
 							})
 						})
