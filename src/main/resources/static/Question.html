@@ -325,7 +325,7 @@ $(document).ready(function(){
 				</div>
 				<div class="modal-footer">
 					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-					<input type="submit" class="btn btn-info" data-dismiss="modal" value="Save">
+					<input id="insert" class="btn btn-info" data-dismiss="modal" value="Save">
 				</div>
 			</form>
 		</div>
@@ -377,7 +377,10 @@ $(document).ready(function(){
 								dataType : 'JSON',
 								contentType : "application/json; charset=UTF-8",
 								success : function(){
-									location.href = 'http://13.125.158.75:8180/static/data.html'
+									location.href = 'http://13.125.158.75:8180/static/Question.html'
+								},
+								error: function(error){
+									console.log("에러 ㅠㅠ"+ error)
 								}
 							})
 						})
@@ -408,7 +411,7 @@ $(document).ready(function(){
 		$(".logout").click(function(){
 			location.href = 'http://13.125.158.75:8180/static/login.html'
 		});
-		$(".edit").click(function(){
+		$("#insert").click(function(){
 			$.ajax({
 				url: "http://13.125.158.75:8180/text",
 				type: "post",
@@ -420,7 +423,9 @@ $(document).ready(function(){
 				contentType : "application/json; charset=UTF-8",
 				success: function(response){
 					console.log("추가완료!!!!!!!!!")
-				}
+				},error: function(error){
+					console.log("에러데스"+error)
+				} 
 			})
 		})
 	
