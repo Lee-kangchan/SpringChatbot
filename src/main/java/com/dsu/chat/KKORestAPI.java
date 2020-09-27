@@ -132,7 +132,7 @@ public class KKORestAPI {
 
     @DeleteMapping(value = "/quetion/{data}") // 질문 삭제
     public void delQuetion(@PathVariable String data){
-        managers.delData(data);
+        managers.delData("question",data);
     }
 
     @GetMapping(value = "/text") // 채팅 데이터 목록
@@ -156,16 +156,12 @@ public class KKORestAPI {
         for(i =1 ; i< label.length; i++) {
             logger.info(label[i]);
             managers.setData("text",  label[i]);
-            if(i>1){
-                managers.setData(label[i-1], label[i]);
-            }
+            managers.setResponse(label[i], data.getValue());
         }
 
-        managers.setResponse(label[label.length-1], data.getValue());
     }
     @DeleteMapping(value = "/text/{data}")
     public void delText(@PathVariable String data){
-        managers.delData(data);
-
+        managers.delData("text",data);
     }
 }
