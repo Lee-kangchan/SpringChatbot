@@ -136,8 +136,8 @@ public class KKORestAPI {
     }
 
 
-    @DeleteMapping(value = "/question") // 질문 삭제
-    public void delQuetion(@RequestBody String question){
+    @DeleteMapping(value = "/question/{question}") // 질문 삭제
+    public void delQuetion(@PathVariable String question){
         logger.info("질문의 답은 ? "+question);
         managers.delData("question",question);
     }
