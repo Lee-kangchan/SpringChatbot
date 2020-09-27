@@ -163,5 +163,6 @@ public class KKORestAPI {
     @DeleteMapping(value = "/text/{data}")
     public void delText(@PathVariable String data){
         managers.delData("text",data);
+        managers.delResponse(data);
     }
 }
