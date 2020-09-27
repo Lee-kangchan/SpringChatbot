@@ -73,6 +73,7 @@ public class KKORestAPI {
                 for(String i : rtn){
                     rtnStr = managers.getResponse(i);
                 }
+                rtnStr = chatdata.response(rtnStr);
             }
             logger.info(rtnStr);
             List<HashMap<String, Object>> outputs = new ArrayList<>();
