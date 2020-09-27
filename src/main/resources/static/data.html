@@ -329,7 +329,7 @@ $(document).ready(function(){
 				</div>
 				<div class="modal-footer">
 					<input type="button" class="btn btn-default" data-dismiss="modal" value="취소">
-					<input type="submit" class="btn btn-info" value="Save" id="저장">
+					<input type="submit" class="btn btn-info" value="Save" data-dismiss="modal" id="저장">
 				</div>
 			</form>
 		</div>
@@ -406,10 +406,10 @@ $(document).ready(function(){
                 		console.log(i)
                 		data = "<tr style=\"table-layout: fixed;height: auto\">\n" +
                 		"\n" +
-                		"<td colspan=\"1\" class = \"key\" >"+response[i].key+"</td>\n" +
+                		"<td colspan=\"2\" class = \"key\" >"+response[i].key+"</td>\n" +
                 		"<td colspan=\"4\">"+response[i].value + "</td>\n" +
                 		"<td colspan=\"1\">\n" +
-               	 		"<a  class=\"delete\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"삭제\">&#xE872;</i></a>\n" +
+               	 		"&nbsp;<a  class=\"delete\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"삭제\">&#xE872;</i></a>\n" +
                 		"</td>\n" +
                 		"</tr>"
                 		$("#databody").append(data);
@@ -423,6 +423,7 @@ $(document).ready(function(){
     						url : "http://13.125.158.75:8180/text/"+data +"",
     						type : "delete",
     						success : function(){
+								location.href = 'http://13.125.158.75:8180/static/data.html'
     						}
     					})
    					})
@@ -464,6 +465,7 @@ $(document).ready(function(){
             contentType : "application/json; charset=UTF-8",
             success: function(response){
     			location.href = 'http://13.125.158.75:8180/static/data.html'
+				$('#')
             }
     	})
     })
