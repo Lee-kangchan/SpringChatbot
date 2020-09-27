@@ -58,7 +58,7 @@ public class KKORestAPI {
                 }
 
 
-
+            logger.info(utter);
             if(utter.contains("Q")){
                 if(managers.adminYN().equals("0")) {
                     rtnStr = managers.getResponse("질문");
@@ -138,7 +138,6 @@ public class KKORestAPI {
 
     @DeleteMapping(value = "/question") // 질문 삭제
     public void delQuetion(@RequestBody String question){
-        question = question.replace(" " , "").replace("\n","");
         logger.info("질문의 답은 ? "+question);
         managers.delData("question",question);
     }
