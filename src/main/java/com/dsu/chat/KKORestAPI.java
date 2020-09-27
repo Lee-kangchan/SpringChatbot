@@ -130,14 +130,10 @@ public class KKORestAPI {
         return question;
     }
 
-    @PostMapping(value = "/question") // 질문 추가
-    public void setQuetion(@RequestParam String data) {
-        managers.setData("question",data);
-    }
 
-    @DeleteMapping(value = "/quetion/{data}") // 질문 삭제
-    public void delQuetion(@PathVariable String data){
-        managers.delData("question",data);
+    @DeleteMapping(value = "/question") // 질문 삭제
+    public void delQuetion(@RequestBody String question){
+        managers.delData("question",question);
     }
 
     @GetMapping(value = "/text") // 채팅 데이터 목록

@@ -371,7 +371,7 @@ $(document).ready(function(){
 							var data = $(this).closest('tr').children("td.question").text();
 							console.log(data);
 							$.ajax({
-								url : "http://13.125.158.75:8180/question"+data +"",
+								url : "http://13.125.158.75:8180/question",
 								type : "delete",
 								data : "{ \"question\" : \""+data+" \" ",
 								dataType : 'JSON',
