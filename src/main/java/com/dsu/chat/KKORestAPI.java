@@ -86,7 +86,6 @@ public class KKORestAPI {
                 quickReplies = chatdata.list();
             }
 
-            rtnStr = chatdata.response(rtnStr);
 
             text.put("text", rtnStr);
 
