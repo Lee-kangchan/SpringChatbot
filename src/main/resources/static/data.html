@@ -417,7 +417,7 @@ $(document).ready(function(){
 
             		}
             		 $(".delete").click(function(){
-    					var data = $(this).closest('tr').children("td").text();
+    					var data = $(this).closest('tr').children("td.key").text();
 						console.log(data);
     					$.ajax({
     						url : "http://13.125.158.75:8180/text/"+data +"",
