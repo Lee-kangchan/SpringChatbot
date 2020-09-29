@@ -293,10 +293,10 @@ $(document).ready(function(){
 					<th width="15%" style="text-align: center;">키워드</th>
 
 					</th>
-					<th width="80%" style="text-align: center;">답변</th>
+					<th width="77%" style="text-align: center;">답변</th>
 
 					</th>
-					<th width="5%" style="text-align: center;">삭제</th>
+					<th width="8%" style="text-align: center;">삭제</th>
 				</tr>
 				</thead>
 				<tbody id = "databody" style="table-layout: fixed;height: auto">
@@ -407,8 +407,8 @@ $(document).ready(function(){
                 		data = "<tr style=\"table-layout: fixed;height: auto\">\n" +
                 		"\n" +
                 		"<td width=\"15%\" style=\"table-layout: fixed;height: auto\" class = \"key\" >"+response[i].key+"</td>\n" +
-                		"<td width=\"80%\" style=\"table-layout: fixed;height: auto\">"+response[i].value + "</td>\n" +
-                		"<td width=\"5%\" style=\"padding-left:5px\">\n" +
+                		"<td width=\"77%\" style=\"table-layout: fixed;height: auto\">"+response[i].value + "</td>\n" +
+                		"<td width=\"8%\" style=\"padding-left:5px\">\n" +
                	 		"<a href=\"#\"class=\"delete\" data-toggle=\"modal\" ><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"삭제\">&#xE872;</i></a>\n" +
                 		"</td>\n" +
                 		"</tr>"
@@ -465,7 +465,6 @@ $(document).ready(function(){
             contentType : "application/json; charset=UTF-8",
             success: function(response){
     			location.href = 'http://13.125.158.75:8180/static/data.html'
-				$('#')
             }
     	})
     })
