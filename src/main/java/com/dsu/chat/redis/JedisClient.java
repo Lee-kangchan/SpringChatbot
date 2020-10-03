@@ -12,7 +12,8 @@ import redis.clients.jedis.util.Pool;
 public class JedisClient {
     @Bean
     public Jedis jedis() {
-        Jedis jedis = new Jedis("chandis-001.36dxq7.0001.apn2.cache.amazonaws.com", 6379);
+
+        Jedis jedis = new Jedis("helloredis.36dxq7.ng.0001.apn2.cache.amazonaws.com", 6379);
 
         return jedis;
     }
